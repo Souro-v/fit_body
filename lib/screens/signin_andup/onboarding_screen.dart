@@ -2,10 +2,7 @@
 //
 // Full onboarding flow  –  4 swipeable pages (2-A → 2-D)
 // Uses PageView for swiping + smooth_page_indicator for the dots.
-
 import 'package:flutter/material.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-
 import '../../models/onboarding_page_model.dart';
 import '../../routes/app_routes.dart';
 import '../../widgets/onboarding_page_widgets.dart';
@@ -23,8 +20,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   bool get _isLastPage => _currentPage == kOnboardingPages.length - 1;
 
   void _goNext() {
-    if (_isLastPage) {
-      _onGetStarted();
+    if (_isLastPage){
+    _onGetStarted();
     } else {
       _controller.nextPage(
         duration: const Duration(milliseconds: 400),
@@ -34,7 +31,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   }
 
   void _onGetStarted() {
-    Navigator.pushReplacementNamed(context, AppRoutes.home);
+    Navigator.pushReplacementNamed(context, AppRoutes.login);
   }
 
   @override

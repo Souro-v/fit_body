@@ -1,4 +1,3 @@
-// lib/screens/login_screen.dart
 
 import 'package:flutter/material.dart';
 import '../../routes/app_routes.dart';
@@ -103,7 +102,7 @@ class _LoginScreenState extends State<LoginScreen> {
               // ── Log In button ────────────────────────────────────────────
               AuthPrimaryButton(
                 label: 'Log In',
-                onTap: () => Navigator.pushReplacementNamed(context, AppRoutes.home),
+                onTap: () => Navigator.pushReplacementNamed(context, AppRoutes.setupIntro),
               ),
 
               const SizedBox(height: 20),

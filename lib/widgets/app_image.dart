@@ -81,8 +81,8 @@ class AppLogoImage extends StatelessWidget {
   }
 }
 
-// ─── 3. Small icon image ──────────────────────────────────────────────────────
-// Square icon, fixed size, original color রাখে।
+// ─── 3. Small icons image ──────────────────────────────────────────────────────
+// Square icons, fixed size, original color রাখে।
 class AppIconImage extends StatelessWidget {
   const AppIconImage({
     super.key,

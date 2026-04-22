@@ -1,7 +1,9 @@
-// lib/routes/app_routes.dart
 
 import 'package:flutter/material.dart';
-
+import '../screens/setup/setup_age_screen.dart';
+import '../screens/setup/setup_gender_screen.dart';
+import '../screens/setup/setup_intro_screen.dart';
+import '../screens/setup/setup_weight_screen.dart';
 import '../screens/signin_andup/forgot_password.dart';
 import '../screens/signin_andup/onboarding_screen.dart';
 import '../screens/signin_andup/login_screen.dart';
@@ -22,12 +24,18 @@ class AppRoutes {
   static const String home            = '/home';
   static const String profile         = '/profile';
   static const String dashboard       = '/dashboard';
+  static const String setupIntro   = '/setup';
+  static const String setupGender  = '/setup-gender';
+  static const String setupAge     = '/setup-age';
+  static const String setupWeight  = '/setup-weight';
+
 }
 
 class AppRouter {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case AppRoutes.splash:
+        return _slide(const HomeScreen(), settings);
       case AppRoutes.onboarding:
         return _slide(const OnboardingScreen(), settings);
       case AppRoutes.login:
@@ -40,6 +48,14 @@ class AppRouter {
         return _slide(const SetPasswordScreen(), settings);
       case AppRoutes.home:
         return _slide(const HomeScreen(), settings);
+      case AppRoutes.setupIntro:
+        return _slide(const SetupIntroScreen(), settings);
+      case AppRoutes.setupGender:
+        return _slide(const SetupGenderScreen(), settings);
+      case AppRoutes.setupAge:
+        return _slide(const SetupAgeScreen(), settings);
+      case AppRoutes.setupWeight:
+        return _slide(const SetupWeightScreen(), settings);
       default:
         return _errorRoute(settings.name);
     }

@@ -275,13 +275,13 @@ class _CardContent extends StatelessWidget {
 // Sub-widgets
 // ─────────────────────────────────────────────────────────────────────────────
 
-/// Displays the yellow icon from assets.
-/// Shows a placeholder icon if the asset is not yet added.
+/// Displays the yellow icons from assets.
+/// Shows a placeholder icons if the asset is not yet added.
 class _IconWidget extends StatelessWidget {
   const _IconWidget({required this.iconPath, this.tintYellow = false});
   final String iconPath;
   // tintYellow = true  → single-color white/black PNG কে yellow করে
-  // tintYellow = false → আপনার icon এর original color রাখে (default)
+  // tintYellow = false → আপনার icons এর original color রাখে (default)
   final bool tintYellow;
 
   @override

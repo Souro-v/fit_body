@@ -225,8 +225,8 @@ class SocialButtons extends StatelessWidget {
 class _SocialBtn extends StatelessWidget {
   const _SocialBtn({
     required this.onTap,
-    this.icon,          // placeholder icon (asset না থাকলে)
-    this.assetPath,     // আপনার icon asset path
+    this.icon,          // placeholder icons (asset না থাকলে)
+    this.assetPath,     // আপনার icons asset path
   });
   final IconData? icon;
   final String? assetPath;
