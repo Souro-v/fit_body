@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import '../screens/dashboard_screen.dart';
 import '../screens/setup/setup_activity_screen.dart';
 import '../screens/setup/setup_age_screen.dart';
 import '../screens/setup/setup_gender_screen.dart';
@@ -36,7 +37,6 @@ class AppRoutes {
   static const String setupGoal     = '/setup-goal';
   static const String setupActivity = '/setup-activity';
   static const String setupProfile  = '/setup-profile';
-
 }
 
 class AppRouter {
@@ -72,6 +72,9 @@ class AppRouter {
         return _slide(const SetupActivityScreen(), settings);
       case AppRoutes.setupProfile:
         return _slide(const SetupProfileScreen(), settings);
+      case AppRoutes.dashboard:
+        return _slide(const DashboardScreen(), settings);
+
       default:
         return _errorRoute(settings.name);
     }
