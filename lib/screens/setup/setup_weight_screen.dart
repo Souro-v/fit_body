@@ -122,7 +122,7 @@ class _SetupWeightScreenState extends State<SetupWeightScreen> {
               ),
               const Spacer(),
               GestureDetector(
-                onTap: () => Navigator.pushReplacementNamed(context, AppRoutes.dashboard),
+                onTap: () => Navigator.pushReplacementNamed(context, AppRoutes.setupHeight),
                 child: Container(
                   height: 50,
                   width: double.infinity,

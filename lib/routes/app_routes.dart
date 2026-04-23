@@ -1,8 +1,12 @@
 
 import 'package:flutter/material.dart';
+import '../screens/setup/setup_activity_screen.dart';
 import '../screens/setup/setup_age_screen.dart';
 import '../screens/setup/setup_gender_screen.dart';
+import '../screens/setup/setup_goal_screen.dart';
+import '../screens/setup/setup_height_screen.dart';
 import '../screens/setup/setup_intro_screen.dart';
+import '../screens/setup/setup_profile_screen.dart';
 import '../screens/setup/setup_weight_screen.dart';
 import '../screens/signin_andup/forgot_password.dart';
 import '../screens/signin_andup/onboarding_screen.dart';
@@ -28,6 +32,10 @@ class AppRoutes {
   static const String setupGender  = '/setup-gender';
   static const String setupAge     = '/setup-age';
   static const String setupWeight  = '/setup-weight';
+  static const String setupHeight   = '/setup-height';
+  static const String setupGoal     = '/setup-goal';
+  static const String setupActivity = '/setup-activity';
+  static const String setupProfile  = '/setup-profile';
 
 }
 
@@ -56,6 +64,14 @@ class AppRouter {
         return _slide(const SetupAgeScreen(), settings);
       case AppRoutes.setupWeight:
         return _slide(const SetupWeightScreen(), settings);
+      case AppRoutes.setupHeight:
+        return _slide(const SetupHeightScreen(), settings);
+      case AppRoutes.setupGoal:
+        return _slide(const SetupGoalScreen(), settings);
+      case AppRoutes.setupActivity:
+        return _slide(const SetupActivityScreen(), settings);
+      case AppRoutes.setupProfile:
+        return _slide(const SetupProfileScreen(), settings);
       default:
         return _errorRoute(settings.name);
     }
