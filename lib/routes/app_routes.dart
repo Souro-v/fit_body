@@ -14,7 +14,8 @@ import '../screens/signin_andup/onboarding_screen.dart';
 import '../screens/signin_andup/login_screen.dart';
 import '../screens/signin_andup/register_screen.dart';
 import '../screens/signin_andup/set_password_screen.dart';
-
+import '../screens/profile_screen.dart';
+import '../screens/edit_profile_screen.dart';
 import '../screens/home_screen.dart';
 
 class AppRoutes {
@@ -37,6 +38,7 @@ class AppRoutes {
   static const String setupGoal     = '/setup-goal';
   static const String setupActivity = '/setup-activity';
   static const String setupProfile  = '/setup-profile';
+  static const String editProfile = '/edit-profile';
 }
 
 class AppRouter {
@@ -74,7 +76,10 @@ class AppRouter {
         return _slide(const SetupProfileScreen(), settings);
       case AppRoutes.dashboard:
         return _slide(const DashboardScreen(), settings);
-
+      case AppRoutes.profile:
+        return _slide(const ProfileScreen(), settings);
+      case AppRoutes.editProfile:
+        return _slide(const EditProfileScreen(), settings);
       default:
         return _errorRoute(settings.name);
     }
@@ -94,7 +99,6 @@ class AppRouter {
       transitionDuration: const Duration(milliseconds: 350),
     );
   }
-
   static Route<dynamic> _errorRoute(String? name) {
     return MaterialPageRoute(
       builder: (_) => Scaffold(

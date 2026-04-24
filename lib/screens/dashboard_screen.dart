@@ -1,4 +1,4 @@
-
+import 'package:fit_body/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import '../widgets/app_image.dart';
 
@@ -30,35 +30,51 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Hi, Madison',
-                              style: TextStyle(
-                                  color: Color(0xFFB39DDB),
-                                  fontSize: 22,
-                                  fontWeight: FontWeight.w800)),
+                          Text(
+                            'Hi, Madison',
+                            style: TextStyle(
+                              color: Color(0xFFB39DDB),
+                              fontSize: 22,
+                              fontWeight: FontWeight.w800,
+                            ),
+                          ),
                           SizedBox(height: 4),
-                          Text("It's time to challenge your limits.",
-                              style: TextStyle(
-                                  color: Colors.white70, fontSize: 13)),
+                          Text(
+                            "It's time to challenge your limits.",
+                            style: TextStyle(
+                              color: Colors.white70,
+                              fontSize: 13,
+                            ),
+                          ),
                         ],
                       ),
                     ),
                     // Search
                     IconButton(
                       onPressed: () {},
-                      icon: const Icon(Icons.search,
-                          color: Colors.white70, size: 24),
+                      icon: const Icon(
+                        Icons.search,
+                        color: Colors.white70,
+                        size: 24,
+                      ),
                     ),
                     // Notification
                     IconButton(
                       onPressed: () {},
-                      icon: const Icon(Icons.notifications_none,
-                          color: Colors.white70, size: 24),
+                      icon: const Icon(
+                        Icons.notifications_none,
+                        color: Colors.white70,
+                        size: 24,
+                      ),
                     ),
                     // Profile
                     IconButton(
                       onPressed: () {},
-                      icon: const Icon(Icons.person_outline,
-                          color: Colors.white70, size: 24),
+                      icon: const Icon(
+                        Icons.person_outline,
+                        color: Colors.white70,
+                        size: 24,
+                      ),
                     ),
                   ],
                 ),
@@ -106,21 +122,31 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Row(
                   children: [
-                    const Text('Recommendations',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w700)),
+                    const Text(
+                      'Recommendations',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
                     const Spacer(),
                     GestureDetector(
                       onTap: () {},
                       child: const Row(
                         children: [
-                          Text('See All',
-                              style: TextStyle(
-                                  color: Color(0xFFB39DDB), fontSize: 13)),
-                          Icon(Icons.arrow_forward_ios,
-                              color: Color(0xFFB39DDB), size: 12),
+                          Text(
+                            'See All',
+                            style: TextStyle(
+                              color: Color(0xFFB39DDB),
+                              fontSize: 13,
+                            ),
+                          ),
+                          Icon(
+                            Icons.arrow_forward_ios,
+                            color: Color(0xFFB39DDB),
+                            size: 12,
+                          ),
                         ],
                       ),
                     ),
@@ -168,13 +194,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       fit: StackFit.expand,
                       children: [
                         AppBgImage(
-                            assetPath: 'assets/images/weekly_challenge.png'),
+                          assetPath: 'assets/images/weekly_challenge.png',
+                        ),
                         Container(
                           decoration: BoxDecoration(
                             gradient: LinearGradient(
                               colors: [
                                 Colors.black.withValues(alpha: 0.7),
-                                Colors.transparent
+                                Colors.transparent,
                               ],
                               begin: Alignment.centerLeft,
                               end: Alignment.centerRight,
@@ -187,16 +214,23 @@ class _DashboardScreenState extends State<DashboardScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text('Weekly\nChallenge',
-                                  style: TextStyle(
-                                      color: Color(0xFFE8E44A),
-                                      fontSize: 18,
-                                      fontWeight: FontWeight.w800,
-                                      height: 1.2)),
+                              Text(
+                                'Weekly\nChallenge',
+                                style: TextStyle(
+                                  color: Color(0xFFE8E44A),
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w800,
+                                  height: 1.2,
+                                ),
+                              ),
                               SizedBox(height: 6),
-                              Text('Plank With Hip Twist',
-                                  style: TextStyle(
-                                      color: Colors.white70, fontSize: 12)),
+                              Text(
+                                'Plank With Hip Twist',
+                                style: TextStyle(
+                                  color: Colors.white70,
+                                  fontSize: 12,
+                                ),
+                              ),
                             ],
                           ),
                         ),
@@ -214,11 +248,14 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text('Articles & Tips',
-                        style: TextStyle(
-                            color: Color(0xFFB39DDB),
-                            fontSize: 16,
-                            fontWeight: FontWeight.w700)),
+                    const Text(
+                      'Articles & Tips',
+                      style: TextStyle(
+                        color: Color(0xFFB39DDB),
+                        fontSize: 16,
+                        fontWeight: FontWeight.w700,
+                      ),
+                    ),
                     const SizedBox(height: 12),
                     Row(
                       children: [
@@ -278,7 +315,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
             _NavItem(
               iconPath: 'assets/icons/ic_nav_profile.png',
               selected: _currentIndex == 3,
-              onTap: () => setState(() => _currentIndex = 3),
+              onTap: () => Navigator.pushNamed(context, AppRoutes.profile),
             ),
           ],
         ),
@@ -292,8 +329,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
 class _Divider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container(
-        width: 1, height: 40, color: Colors.white24);
+    return Container(width: 1, height: 40, color: Colors.white24);
   }
 }
 
@@ -303,6 +339,7 @@ class _QuickIcon extends StatelessWidget {
     required this.label,
     required this.onTap,
   });
+
   final String iconPath;
   final String label;
   final VoidCallback onTap;
@@ -315,10 +352,15 @@ class _QuickIcon extends StatelessWidget {
         children: [
           AppIconImage(assetPath: iconPath, size: 36, color: Colors.white),
           const SizedBox(height: 6),
-          Text(label,
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                  color: Colors.white70, fontSize: 11, height: 1.3)),
+          Text(
+            label,
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              color: Colors.white70,
+              fontSize: 11,
+              height: 1.3,
+            ),
+          ),
         ],
       ),
     );
@@ -332,6 +374,7 @@ class _WorkoutCard extends StatelessWidget {
     required this.minutes,
     required this.kcal,
   });
+
   final String imagePath;
   final String title;
   final String minutes;
@@ -352,7 +395,10 @@ class _WorkoutCard extends StatelessWidget {
                 gradient: LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
-                  colors: [Colors.transparent, Colors.black.withValues(alpha: 0.8)],
+                  colors: [
+                    Colors.transparent,
+                    Colors.black.withValues(alpha: 0.8),
+                  ],
                 ),
               ),
             ),
@@ -382,27 +428,44 @@ class _WorkoutCard extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(title,
-                        style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 12,
-                            fontWeight: FontWeight.w600)),
+                    Text(
+                      title,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
                     const SizedBox(height: 4),
                     Row(
                       children: [
-                        const Icon(Icons.access_time,
-                            color: Color(0xFFB39DDB), size: 12),
+                        const Icon(
+                          Icons.access_time,
+                          color: Color(0xFFB39DDB),
+                          size: 12,
+                        ),
                         const SizedBox(width: 3),
-                        Text(minutes,
-                            style: const TextStyle(
-                                color: Colors.white70, fontSize: 10)),
+                        Text(
+                          minutes,
+                          style: const TextStyle(
+                            color: Colors.white70,
+                            fontSize: 10,
+                          ),
+                        ),
                         const SizedBox(width: 8),
-                        const Icon(Icons.local_fire_department,
-                            color: Color(0xFFB39DDB), size: 12),
+                        const Icon(
+                          Icons.local_fire_department,
+                          color: Color(0xFFB39DDB),
+                          size: 12,
+                        ),
                         const SizedBox(width: 3),
-                        Text(kcal,
-                            style: const TextStyle(
-                                color: Colors.white70, fontSize: 10)),
+                        Text(
+                          kcal,
+                          style: const TextStyle(
+                            color: Colors.white70,
+                            fontSize: 10,
+                          ),
+                        ),
                       ],
                     ),
                   ],
@@ -418,6 +481,7 @@ class _WorkoutCard extends StatelessWidget {
 
 class _ArticleCard extends StatelessWidget {
   const _ArticleCard({required this.imagePath, required this.title});
+
   final String imagePath;
   final String title;
 
@@ -444,9 +508,14 @@ class _ArticleCard extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 6),
-        Text(title,
-            style: const TextStyle(
-                color: Colors.white, fontSize: 12, height: 1.4)),
+        Text(
+          title,
+          style: const TextStyle(
+            color: Colors.white,
+            fontSize: 12,
+            height: 1.4,
+          ),
+        ),
       ],
     );
   }
@@ -458,6 +527,7 @@ class _NavItem extends StatelessWidget {
     required this.selected,
     required this.onTap,
   });
+
   final String iconPath;
   final bool selected;
   final VoidCallback onTap;
@@ -469,7 +539,9 @@ class _NavItem extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
-          color: selected ? Colors.white.withValues(alpha: 0.3) : Colors.transparent,
+          color: selected
+              ? Colors.white.withValues(alpha: 0.3)
+              : Colors.transparent,
           borderRadius: BorderRadius.circular(12),
         ),
         child: AppIconImage(
