@@ -21,6 +21,7 @@ import '../screens/favorites_screen.dart';
 import '../screens/settings_screen.dart';
 import '../screens/notification_settings_screen.dart';
 import '../screens/password_settings_screen.dart';
+import '../screens/notifications_screen.dart';
 
 
 class AppRoutes {
@@ -49,6 +50,8 @@ class AppRoutes {
   static const String notificationSettings = '/notification-settings';
   static const String passwordSettings     = '/password-settings';
   static const String help     = '/Help';
+  static const String notifications = '/notifications';
+
 
 }
 
@@ -101,7 +104,9 @@ class AppRouter {
         return _slide(const PasswordSettingsScreen(), settings);
       case AppRoutes.help:
         return _slide(const HelpScreen(), settings);
-      default:
+      case AppRoutes.notifications:
+        return _slide(const NotificationsScreen(), settings);
+        default:
         return _errorRoute(settings.name);
     }
   }

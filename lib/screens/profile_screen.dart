@@ -160,27 +160,76 @@ class _ProfileScreenState extends State<ProfileScreen> {
   }
 
   void _showLogoutDialog(BuildContext context) {
-    showDialog(
+    showModalBottomSheet(
       context: context,
-      builder: (_) => AlertDialog(
-        backgroundColor: AppColors.card,
-        title: const Text('Logout',
-            style: TextStyle(color: Colors.white)),
-        content: const Text('Are you sure you want to logout?',
-            style: TextStyle(color: Colors.white70)),
-        actions: [
-          TextButton(
-            onPressed: () => Navigator.pop(context),
-            child: const Text('Cancel',
-                style: TextStyle(color: AppColors.purple)),
+      backgroundColor: Colors.transparent,
+      builder: (_) => Container(
+        padding: const EdgeInsets.all(24),
+        decoration: const BoxDecoration(
+          color: Color(0xFFD4C5F9),
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(24),
+            topRight: Radius.circular(24),
           ),
-          TextButton(
-            onPressed: () => Navigator.pushReplacementNamed(
-                context, AppRoutes.login),
-            child: const Text('Logout',
-                style: TextStyle(color: AppColors.yellow)),
-          ),
-        ],
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            const Text(
+              'Are you sure you want to\nlog out?',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w600),
+            ),
+            const SizedBox(height: 24),
+            Row(
+              children: [
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () => Navigator.pop(context),
+                    child: Container(
+                      height: 48,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      alignment: Alignment.center,
+                      child: const Text('Cancel',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.w600)),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 16),
+                Expanded(
+                  child: GestureDetector(
+                    onTap: () => Navigator.pushNamedAndRemoveUntil(
+                      context,
+                      AppRoutes.login,
+                          (route) => false,
+                    ),
+                    child: Container(
+                      height: 48,
+                      decoration: BoxDecoration(
+                        color: AppColors.yellow,
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      alignment: Alignment.center,
+                      child: const Text('Yes, logout',
+                          style: TextStyle(
+                              color: Colors.black,
+                              fontWeight: FontWeight.w600)),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 16),
+          ],
+        ),
       ),
     );
   }

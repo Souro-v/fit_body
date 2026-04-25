@@ -60,7 +60,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     ),
                     // Notification
                     IconButton(
-                      onPressed: () {},
+                      onPressed: () => Navigator.pushNamed(context, AppRoutes.notifications),
                       icon: const Icon(
                         Icons.notifications_none,
                         color: Colors.white70,
