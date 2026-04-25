@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../screens/dashboard_screen.dart';
+import '../screens/help_screen.dart';
 import '../screens/setup/setup_activity_screen.dart';
 import '../screens/setup/setup_age_screen.dart';
 import '../screens/setup/setup_gender_screen.dart';
@@ -47,6 +48,7 @@ class AppRoutes {
   static const String settings             = '/settings';
   static const String notificationSettings = '/notification-settings';
   static const String passwordSettings     = '/password-settings';
+  static const String help     = '/Help';
 
 }
 
@@ -97,6 +99,8 @@ class AppRouter {
         return _slide(const NotificationSettingsScreen(), settings);
       case AppRoutes.passwordSettings:
         return _slide(const PasswordSettingsScreen(), settings);
+      case AppRoutes.help:
+        return _slide(const HelpScreen(), settings);
       default:
         return _errorRoute(settings.name);
     }
