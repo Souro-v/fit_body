@@ -51,7 +51,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     ),
                     // Search
                     IconButton(
-                      onPressed: () {},
+                      onPressed: ()=> Navigator.pushNamed(context, AppRoutes.search),
                       icon: const Icon(
                         Icons.search,
                         color: Colors.white70,

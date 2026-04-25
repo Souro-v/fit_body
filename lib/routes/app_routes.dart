@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../screens/dashboard_screen.dart';
 import '../screens/help_screen.dart';
+import '../screens/search_screen.dart';
 import '../screens/setup/setup_activity_screen.dart';
 import '../screens/setup/setup_age_screen.dart';
 import '../screens/setup/setup_gender_screen.dart';
@@ -22,7 +23,6 @@ import '../screens/settings_screen.dart';
 import '../screens/notification_settings_screen.dart';
 import '../screens/password_settings_screen.dart';
 import '../screens/notifications_screen.dart';
-
 
 class AppRoutes {
   AppRoutes._();
@@ -46,13 +46,12 @@ class AppRoutes {
   static const String setupProfile = '/setup-profile';
   static const String editProfile = '/edit-profile';
   static const String favorites = '/favorites';
-  static const String settings             = '/settings';
+  static const String settings = '/settings';
   static const String notificationSettings = '/notification-settings';
-  static const String passwordSettings     = '/password-settings';
-  static const String help     = '/Help';
+  static const String passwordSettings = '/password-settings';
+  static const String help = '/Help';
+  static const String search = '/search';
   static const String notifications = '/notifications';
-
-
 }
 
 class AppRouter {
@@ -106,7 +105,9 @@ class AppRouter {
         return _slide(const HelpScreen(), settings);
       case AppRoutes.notifications:
         return _slide(const NotificationsScreen(), settings);
-        default:
+      case AppRoutes.search:
+        return _slide(const SearchScreen(), settings);
+      default:
         return _errorRoute(settings.name);
     }
   }
