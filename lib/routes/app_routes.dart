@@ -17,6 +17,10 @@ import '../screens/profile_screen.dart';
 import '../screens/edit_profile_screen.dart';
 import '../screens/home_screen.dart';
 import '../screens/favorites_screen.dart';
+import '../screens/settings_screen.dart';
+import '../screens/notification_settings_screen.dart';
+import '../screens/password_settings_screen.dart';
+
 
 class AppRoutes {
   AppRoutes._();
@@ -40,6 +44,10 @@ class AppRoutes {
   static const String setupProfile = '/setup-profile';
   static const String editProfile = '/edit-profile';
   static const String favorites = '/favorites';
+  static const String settings             = '/settings';
+  static const String notificationSettings = '/notification-settings';
+  static const String passwordSettings     = '/password-settings';
+
 }
 
 class AppRouter {
@@ -83,6 +91,12 @@ class AppRouter {
         return _slide(const EditProfileScreen(), settings);
       case AppRoutes.favorites:
         return _slide(const FavoritesScreen(), settings);
+      case AppRoutes.settings:
+        return _slide(const SettingsScreen(), settings);
+      case AppRoutes.notificationSettings:
+        return _slide(const NotificationSettingsScreen(), settings);
+      case AppRoutes.passwordSettings:
+        return _slide(const PasswordSettingsScreen(), settings);
       default:
         return _errorRoute(settings.name);
     }
