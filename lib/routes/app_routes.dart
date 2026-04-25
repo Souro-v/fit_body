@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import '../screens/dashboard_screen.dart';
 import '../screens/setup/setup_activity_screen.dart';
@@ -17,28 +16,30 @@ import '../screens/signin_andup/set_password_screen.dart';
 import '../screens/profile_screen.dart';
 import '../screens/edit_profile_screen.dart';
 import '../screens/home_screen.dart';
+import '../screens/favorites_screen.dart';
 
 class AppRoutes {
   AppRoutes._();
 
-  static const String splash          = '/';
-  static const String onboarding      = '/onboarding';
-  static const String login           = '/login';
-  static const String register        = '/register';
-  static const String forgotPassword  = '/forgot-password';
-  static const String setPassword     = '/set-password';
-  static const String home            = '/home';
-  static const String profile         = '/profile';
-  static const String dashboard       = '/dashboard';
-  static const String setupIntro   = '/setup';
-  static const String setupGender  = '/setup-gender';
-  static const String setupAge     = '/setup-age';
-  static const String setupWeight  = '/setup-weight';
-  static const String setupHeight   = '/setup-height';
-  static const String setupGoal     = '/setup-goal';
+  static const String splash = '/';
+  static const String onboarding = '/onboarding';
+  static const String login = '/login';
+  static const String register = '/register';
+  static const String forgotPassword = '/forgot-password';
+  static const String setPassword = '/set-password';
+  static const String home = '/home';
+  static const String profile = '/profile';
+  static const String dashboard = '/dashboard';
+  static const String setupIntro = '/setup';
+  static const String setupGender = '/setup-gender';
+  static const String setupAge = '/setup-age';
+  static const String setupWeight = '/setup-weight';
+  static const String setupHeight = '/setup-height';
+  static const String setupGoal = '/setup-goal';
   static const String setupActivity = '/setup-activity';
-  static const String setupProfile  = '/setup-profile';
+  static const String setupProfile = '/setup-profile';
   static const String editProfile = '/edit-profile';
+  static const String favorites = '/favorites';
 }
 
 class AppRouter {
@@ -80,6 +81,8 @@ class AppRouter {
         return _slide(const ProfileScreen(), settings);
       case AppRoutes.editProfile:
         return _slide(const EditProfileScreen(), settings);
+      case AppRoutes.favorites:
+        return _slide(const FavoritesScreen(), settings);
       default:
         return _errorRoute(settings.name);
     }
@@ -91,21 +94,26 @@ class AppRouter {
       pageBuilder: (_, __, ___) => page,
       transitionsBuilder: (_, animation, __, child) {
         const begin = Offset(1.0, 0.0);
-        const end   = Offset.zero;
-        final tween = Tween(begin: begin, end: end)
-            .chain(CurveTween(curve: Curves.easeInOut));
+        const end = Offset.zero;
+        final tween = Tween(
+          begin: begin,
+          end: end,
+        ).chain(CurveTween(curve: Curves.easeInOut));
         return SlideTransition(position: animation.drive(tween), child: child);
       },
       transitionDuration: const Duration(milliseconds: 350),
     );
   }
+
   static Route<dynamic> _errorRoute(String? name) {
     return MaterialPageRoute(
       builder: (_) => Scaffold(
         backgroundColor: Colors.black,
         body: Center(
-          child: Text('Route not found: $name',
-              style: const TextStyle(color: Colors.white70)),
+          child: Text(
+            'Route not found: $name',
+            style: const TextStyle(color: Colors.white70),
+          ),
         ),
       ),
     );
