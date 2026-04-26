@@ -23,6 +23,8 @@ import '../screens/settings_screen.dart';
 import '../screens/notification_settings_screen.dart';
 import '../screens/password_settings_screen.dart';
 import '../screens/notifications_screen.dart';
+import '../screens/workout_screen.dart';
+import '../screens/workout_detail_screen.dart';
 
 class AppRoutes {
   AppRoutes._();
@@ -52,6 +54,8 @@ class AppRoutes {
   static const String help = '/Help';
   static const String search = '/search';
   static const String notifications = '/notifications';
+  static const String workout = '/workout';
+  static const String workoutDetail = '/workout-detail';
 }
 
 class AppRouter {
@@ -107,6 +111,10 @@ class AppRouter {
         return _slide(const NotificationsScreen(), settings);
       case AppRoutes.search:
         return _slide(const SearchScreen(), settings);
+      case AppRoutes.workout:
+        return _slide(const WorkoutScreen(), settings);
+      case AppRoutes.workoutDetail:
+        return _slide(const WorkoutDetailScreen(), settings);
       default:
         return _errorRoute(settings.name);
     }
