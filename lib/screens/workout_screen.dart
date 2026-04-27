@@ -78,11 +78,33 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
       ],
     ),
     'Advanced': _LevelData(
-      bannerImage: 'assets/images/workout_cardio.png',
-      bannerTitle: 'Advanced Training',
-      sectionTitle: 'Push Your Limits',
-      sectionSubtitle: 'Explore Advanced Workouts',
-      workouts: [],
+      bannerImage: 'assets/images/workout_advanced_banner.png',
+      bannerTitle: 'Upper Body Strength',
+      sectionTitle: 'Unlock Your Potential',
+      sectionSubtitle: 'Explore Advanced Fitness Routines',
+      workouts: [
+        _WorkoutItem(
+          image: 'assets/images/workout_cardio_boxing.png',
+          title: 'Cardio Boxing',
+          minutes: '50 Minutes',
+          kcal: '1300 Kcal',
+          exercises: '5 Exercises',
+        ),
+        _WorkoutItem(
+          image: 'assets/images/workout_hypertrophy.png',
+          title: 'Hypertrophy - Legs',
+          minutes: '12 Minutes',
+          kcal: '1250 Kcal',
+          exercises: '5 Exercises',
+        ),
+        _WorkoutItem(
+          image: 'assets/images/workout_rest.png',
+          title: 'Rest Or Active',
+          minutes: '30 Minutes',
+          kcal: '500 Kcal',
+          exercises: '5 Exercises',
+        ),
+      ],
     ),
   };
 
