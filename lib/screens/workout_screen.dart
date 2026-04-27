@@ -1,4 +1,3 @@
-// lib/screens/workout_screen.dart
 
 import 'package:flutter/material.dart';
 import '../widgets/app_image.dart';
@@ -238,7 +237,8 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
                               left: 12,
                               right: 12,
                               child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                                crossAxisAlignment:
+                                CrossAxisAlignment.start,
                                 children: [
                                   Text(data.bannerTitle,
                                       style: const TextStyle(
@@ -249,7 +249,8 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
                                   const Row(
                                     children: [
                                       Icon(Icons.access_time,
-                                          color: AppColors.purple, size: 12),
+                                          color: AppColors.purple,
+                                          size: 12),
                                       SizedBox(width: 3),
                                       Text('45 Minutes',
                                           style: TextStyle(
@@ -257,7 +258,8 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
                                               fontSize: 11)),
                                       SizedBox(width: 10),
                                       Icon(Icons.local_fire_department,
-                                          color: AppColors.purple, size: 12),
+                                          color: AppColors.purple,
+                                          size: 12),
                                       SizedBox(width: 3),
                                       Text('120 Kcal',
                                           style: TextStyle(
@@ -265,7 +267,8 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
                                               fontSize: 11)),
                                       SizedBox(width: 10),
                                       Icon(Icons.fitness_center,
-                                          color: AppColors.purple, size: 12),
+                                          color: AppColors.purple,
+                                          size: 12),
                                       SizedBox(width: 3),
                                       Text('5 Exercises',
                                           style: TextStyle(
@@ -287,6 +290,7 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
 
                   const SizedBox(height: 20),
 
+                  // Section title
                   Text(data.sectionTitle,
                       style: const TextStyle(
                           color: AppColors.yellow,
@@ -296,8 +300,39 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
                   Text(data.sectionSubtitle,
                       style: const TextStyle(
                           color: Colors.white54, fontSize: 12)),
+
+                  const SizedBox(height: 12),
+
+                  // Create Routine button
+                  GestureDetector(
+                    onTap: () => Navigator.pushNamed(
+                        context, AppRoutes.createRoutine),
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 16, vertical: 10),
+                      decoration: BoxDecoration(
+                        border: Border.all(color: AppColors.yellow),
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: const Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(Icons.add,
+                              color: AppColors.yellow, size: 18),
+                          SizedBox(width: 6),
+                          Text('Create Your Routine',
+                              style: TextStyle(
+                                  color: AppColors.yellow,
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.w600)),
+                        ],
+                      ),
+                    ),
+                  ),
+
                   const SizedBox(height: 16),
 
+                  // Workout list
                   ...data.workouts.map((item) => _WorkoutCard(
                     item: item,
                     onTap: () => Navigator.pushNamed(
