@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../screens/dashboard_screen.dart';
 import '../screens/help_screen.dart';
+import '../screens/progress_tracking_screen.dart';
 import '../screens/search_screen.dart';
 import '../screens/setup/setup_activity_screen.dart';
 import '../screens/setup/setup_age_screen.dart';
@@ -62,6 +63,7 @@ class AppRoutes {
   static const String createRoutine = '/create-routine';
   static const String yourRoutine = '/your-routine';
   static const String routineDetail = '/routine-detail';
+  static const String progressTracking = '/progress-tracking';
 }
 
 class AppRouter {
@@ -127,7 +129,9 @@ class AppRouter {
         return _slide(const YourRoutineScreen(), settings);
       case AppRoutes.routineDetail:
         return _slide(const RoutineDetailScreen(), settings);
-      default:
+      case AppRoutes.progressTracking:
+        return _slide(const ProgressTrackingScreen(), settings);
+        default:
         return _errorRoute(settings.name);
     }
   }

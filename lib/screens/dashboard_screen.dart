@@ -97,7 +97,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     _QuickIcon(
                       iconPath: 'assets/icons/ic_progress.png',
                       label: 'Progress\nTracking',
-                      onTap: () {},
+                      onTap: ()=> Navigator.pushNamed(context, AppRoutes.progressTracking),
                     ),
                     _Divider(),
                     _QuickIcon(
