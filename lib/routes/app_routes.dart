@@ -25,6 +25,9 @@ import '../screens/password_settings_screen.dart';
 import '../screens/notifications_screen.dart';
 import '../screens/workout_screen.dart';
 import '../screens/workout_detail_screen.dart';
+import '../screens/create_routine_screen.dart';
+import '../screens/your_routine_screen.dart';
+import '../screens/routine_detail_screen.dart';
 
 class AppRoutes {
   AppRoutes._();
@@ -56,6 +59,9 @@ class AppRoutes {
   static const String notifications = '/notifications';
   static const String workout = '/workout';
   static const String workoutDetail = '/workout-detail';
+  static const String createRoutine = '/create-routine';
+  static const String yourRoutine = '/your-routine';
+  static const String routineDetail = '/routine-detail';
 }
 
 class AppRouter {
@@ -115,6 +121,12 @@ class AppRouter {
         return _slide(const WorkoutScreen(), settings);
       case AppRoutes.workoutDetail:
         return _slide(const WorkoutDetailScreen(), settings);
+      case AppRoutes.createRoutine:
+        return _slide(const CreateRoutineScreen(), settings);
+      case AppRoutes.yourRoutine:
+        return _slide(const YourRoutineScreen(), settings);
+      case AppRoutes.routineDetail:
+        return _slide(const RoutineDetailScreen(), settings);
       default:
         return _errorRoute(settings.name);
     }
