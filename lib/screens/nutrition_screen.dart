@@ -1,5 +1,3 @@
-// lib/screens/nutrition_screen.dart
-
 import 'package:flutter/material.dart';
 import '../widgets/app_image.dart';
 import '../widgets/app_widgets.dart';
@@ -15,7 +13,6 @@ class NutritionScreen extends StatefulWidget {
 class _NutritionScreenState extends State<NutritionScreen> {
   int _currentIndex = 1;
   String _selectedTab = 'Meal Plans';
-
   final _recommended = [
     _NutritionItem(
       image: 'assets/images/fav_smoothie.png',
@@ -102,7 +99,7 @@ class _NutritionScreenState extends State<NutritionScreen> {
                   final selected = _selectedTab == tab;
                   return Expanded(
                     child: GestureDetector(
-                      onTap: () => setState(() => _selectedTab = tab),
+                      onTap: ()  => Navigator.pushNamed(context, AppRoutes.mealPlans),
                       child: Container(
                         margin: EdgeInsets.only(
                             right: tab == 'Meal Plans' ? 8 : 0),
