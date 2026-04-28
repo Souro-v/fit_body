@@ -12,7 +12,7 @@ class NutritionScreen extends StatefulWidget {
 
 class _NutritionScreenState extends State<NutritionScreen> {
   int _currentIndex = 1;
-  String _selectedTab = 'Meal Plans';
+ final String _selectedTab = 'Meal Plans';
   final _recommended = [
     _NutritionItem(
       image: 'assets/images/fav_smoothie.png',
