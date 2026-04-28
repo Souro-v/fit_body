@@ -9,7 +9,6 @@ class NutritionScreen extends StatefulWidget {
   @override
   State<NutritionScreen> createState() => _NutritionScreenState();
 }
-
 class _NutritionScreenState extends State<NutritionScreen> {
   int _currentIndex = 1;
  final String _selectedTab = 'Meal Plans';
