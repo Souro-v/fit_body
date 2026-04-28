@@ -103,7 +103,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     _QuickIcon(
                       iconPath: 'assets/icons/ic_nutrition.png',
                       label: 'Nutrition',
-                      onTap: () {},
+                      onTap: ()  => Navigator.pushNamed(context, AppRoutes.nutrition),
                     ),
                     _Divider(),
                     _QuickIcon(
