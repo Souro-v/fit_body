@@ -1,44 +1,54 @@
+// lib/screens/meal_ideas_list_screen.dart
+
 import 'package:flutter/material.dart';
 import '../widgets/app_image.dart';
 import '../widgets/app_widgets.dart';
 import '../routes/app_routes.dart';
 
-class NutritionScreen extends StatefulWidget {
-  const NutritionScreen({super.key});
+class MealIdeasListScreen extends StatefulWidget {
+  const MealIdeasListScreen({super.key});
 
   @override
-  State<NutritionScreen> createState() => _NutritionScreenState();
+  State<MealIdeasListScreen> createState() => _MealIdeasListScreenState();
 }
-class _NutritionScreenState extends State<NutritionScreen> {
+
+class _MealIdeasListScreenState extends State<MealIdeasListScreen> {
   int _currentIndex = 1;
-  String _selectedTab = 'Meal Plans';
+  String _selectedTab = 'Breakfast';
+
+  final _tabs = ['Breakfast', 'Lunch', 'Dinner'];
+
   final _recommended = [
-    _NutritionItem(
+    MealIdeaItem(
       image: 'assets/images/fav_smoothie.png',
       title: 'Fruit Smoothie',
       minutes: '12 Minutes',
       cal: '120 Cal',
+      isVideo: true,
     ),
-    _NutritionItem(
-      image: 'assets/images/nutrition_quinoa.png',
-      title: 'Salads With Quinoa',
+    MealIdeaItem(
+      image: 'assets/images/meal_green_celery.png',
+      title: 'Green Celery Juice',
       minutes: '12 Minutes',
       cal: '120 Cal',
+      isVideo: true,
     ),
   ];
 
   final _recipes = [
-    _NutritionItem(
-      image: 'assets/images/fav_avocado_toast.png',
+    MealIdeaItem(
+      image: 'assets/images/search_yogurt.png',
       title: 'Delights With Greek Yogurt',
       minutes: '6 Minutes',
       cal: '200 Cal',
+      isVideo: false,
     ),
-    _NutritionItem(
-      image: 'assets/images/nutrition_salmon.png',
-      title: 'Baked Salmon',
-      minutes: '30 Minutes',
-      cal: '350 Cal',
+    MealIdeaItem(
+      image: 'assets/images/fav_avocado_toast.png',
+      title: 'Avocado And Egg Toast',
+      minutes: '15 Minutes',
+      cal: '150 Cal',
+      isVideo: false,
     ),
   ];
 
@@ -60,7 +70,7 @@ class _NutritionScreenState extends State<NutritionScreen> {
                         color: AppColors.yellow, size: 16),
                   ),
                   const SizedBox(width: 8),
-                  const Text('Nutrition',
+                  const Text('Meal Ideas',
                       style: TextStyle(
                           color: AppColors.purple,
                           fontSize: 20,
@@ -88,48 +98,38 @@ class _NutritionScreenState extends State<NutritionScreen> {
               ),
             ),
 
-            const SizedBox(height: 16),
+            const SizedBox(height: 12),
 
             // ── Tabs ─────────────────────────────────────────────────────
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Row(
-                children: ['Meal Plans', 'Meal Ideas'].map((tab) {
+                children: _tabs.map((tab) {
                   final selected = _selectedTab == tab;
-                  return Expanded(
-                    child: GestureDetector(
-                      onTap: () {
-                        setState(() => _selectedTab = tab);
-                        if (tab == 'Meal Plans') {
-                          Navigator.pushNamed(context, AppRoutes.mealPlans);
-                        } else {
-                          Navigator.pushNamed(context, AppRoutes.mealIdeas);
-                        }
-                      },
-                      child: Container(
-                        margin: EdgeInsets.only(
-                            right: tab == 'Meal Plans' ? 8 : 0),
-                        height: 44,
-                        decoration: BoxDecoration(
+                  return GestureDetector(
+                    onTap: () => setState(() => _selectedTab = tab),
+                    child: Container(
+                      margin: const EdgeInsets.only(right: 8),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 20, vertical: 8),
+                      decoration: BoxDecoration(
+                        color: selected
+                            ? AppColors.yellow
+                            : Colors.transparent,
+                        borderRadius: BorderRadius.circular(30),
+                        border: Border.all(
                           color: selected
                               ? AppColors.yellow
-                              : Colors.transparent,
-                          borderRadius: BorderRadius.circular(30),
-                          border: Border.all(
-                            color: selected
-                                ? AppColors.yellow
-                                : Colors.white24,
-                          ),
+                              : Colors.white24,
                         ),
-                        alignment: Alignment.center,
-                        child: Text(tab,
-                            style: TextStyle(
-                                color: selected
-                                    ? Colors.black
-                                    : Colors.white70,
-                                fontWeight: FontWeight.w600,
-                                fontSize: 14)),
                       ),
+                      child: Text(tab,
+                          style: TextStyle(
+                              color: selected
+                                  ? Colors.black
+                                  : Colors.white70,
+                              fontSize: 13,
+                              fontWeight: FontWeight.w600)),
                     ),
                   );
                 }).toList(),
@@ -138,28 +138,40 @@ class _NutritionScreenState extends State<NutritionScreen> {
 
             const SizedBox(height: 16),
 
-            // ── Content ──────────────────────────────────────────────────
             Expanded(
               child: ListView(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 children: [
                   // ── Banner ───────────────────────────────────────────
-                  Container(
-                    decoration: BoxDecoration(
-                      color: AppColors.purple.withValues(alpha: 0.3),
-                      borderRadius: BorderRadius.circular(20),
+                  GestureDetector(
+                    onTap: () => Navigator.pushNamed(
+                      context,
+                      AppRoutes.mealIdeaDetail,
+                      arguments: MealIdeaItem(
+                        image: 'assets/images/meal_spinach_omelette.png',
+                        title: 'Spinach And Tomato Omelette',
+                        minutes: '10 Minutes',
+                        cal: '220 Cal',
+                        isVideo: false,
+                        ingredients: [
+                          '2-3 eggs',
+                          'A handful of fresh spinach',
+                          '1 small tomato',
+                          'Salt and pepper to taste',
+                          'Olive oil or butter',
+                        ],
+                      ),
                     ),
-                    padding: const EdgeInsets.all(12),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(16),
                       child: SizedBox(
-                        height: 180,
+                        height: 160,
                         child: Stack(
                           fit: StackFit.expand,
                           children: [
                             AppBgImage(
                                 assetPath:
-                                'assets/images/nutrition_banner.png'),
+                                'assets/images/meal_spinach_omelette.png'),
                             Container(
                               decoration: BoxDecoration(
                                 gradient: LinearGradient(
@@ -185,7 +197,7 @@ class _NutritionScreenState extends State<NutritionScreen> {
                                 crossAxisAlignment:
                                 CrossAxisAlignment.start,
                                 children: [
-                                  Text('Carrot And Orange Smoothie',
+                                  Text('Spinach And Tomato Omelette',
                                       style: TextStyle(
                                           color: Colors.white,
                                           fontSize: 15,
@@ -206,7 +218,7 @@ class _NutritionScreenState extends State<NutritionScreen> {
                                           color: AppColors.purple,
                                           size: 12),
                                       SizedBox(width: 3),
-                                      Text('70 Cal',
+                                      Text('220 Cal',
                                           style: TextStyle(
                                               color: Colors.white70,
                                               fontSize: 11)),
@@ -227,11 +239,7 @@ class _NutritionScreenState extends State<NutritionScreen> {
                   const SizedBox(height: 20),
 
                   // ── Recommended ──────────────────────────────────────
-                  SectionHeader(
-                    title: 'Recommended',
-                    onSeeAll: () {},
-                  ),
-
+                  SectionHeader(title: 'Recommended', onSeeAll: () {}),
                   const SizedBox(height: 12),
 
                   SizedBox(
@@ -241,61 +249,65 @@ class _NutritionScreenState extends State<NutritionScreen> {
                       itemCount: _recommended.length,
                       itemBuilder: (context, index) {
                         final item = _recommended[index];
-                        return Container(
-                          width: 150,
-                          margin: const EdgeInsets.only(right: 12),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(16),
-                            child: Stack(
-                              fit: StackFit.expand,
-                              children: [
-                                AppBgImage(assetPath: item.image),
-                                Container(
-                                  decoration: BoxDecoration(
-                                    gradient: LinearGradient(
-                                      begin: Alignment.topCenter,
-                                      end: Alignment.bottomCenter,
-                                      colors: [
-                                        Colors.transparent,
-                                        Colors.black
-                                            .withValues(alpha: 0.8),
-                                      ],
+                        return GestureDetector(
+                          onTap: () => Navigator.pushNamed(
+                            context,
+                            AppRoutes.mealIdeaDetail,
+                            arguments: item,
+                          ),
+                          child: Container(
+                            width: 150,
+                            margin: const EdgeInsets.only(right: 12),
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(16),
+                              child: Stack(
+                                fit: StackFit.expand,
+                                children: [
+                                  AppBgImage(assetPath: item.image),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      gradient: LinearGradient(
+                                        begin: Alignment.topCenter,
+                                        end: Alignment.bottomCenter,
+                                        colors: [
+                                          Colors.transparent,
+                                          Colors.black
+                                              .withValues(alpha: 0.8),
+                                        ],
+                                      ),
                                     ),
                                   ),
-                                ),
-                                const Positioned(
-                                  top: 8,
-                                  right: 8,
-                                  child: Icon(Icons.star_border,
-                                      color: Colors.white, size: 18),
-                                ),
-                                const Positioned(
-                                  bottom: 44,
-                                  right: 8,
-                                  child: CircleAvatar(
-                                    radius: 14,
-                                    backgroundColor: AppColors.purple,
-                                    child: Icon(Icons.play_arrow,
-                                        color: Colors.white, size: 16),
+                                  const Positioned(
+                                    top: 8,
+                                    right: 8,
+                                    child: Icon(Icons.star_border,
+                                        color: Colors.white, size: 18),
                                   ),
-                                ),
-                                Positioned(
-                                  bottom: 8,
-                                  left: 8,
-                                  right: 8,
-                                  child: Column(
-                                    crossAxisAlignment:
-                                    CrossAxisAlignment.start,
-                                    children: [
-                                      Text(item.title,
-                                          style: const TextStyle(
-                                              color: Colors.white,
-                                              fontSize: 11,
-                                              fontWeight:
-                                              FontWeight.w600)),
-                                      const SizedBox(height: 3),
-                                      Row(
-                                        children: [
+                                  const Positioned(
+                                    bottom: 44,
+                                    right: 8,
+                                    child: CircleAvatar(
+                                      radius: 14,
+                                      backgroundColor: AppColors.purple,
+                                      child: Icon(Icons.play_arrow,
+                                          color: Colors.white, size: 16),
+                                    ),
+                                  ),
+                                  Positioned(
+                                    bottom: 8,
+                                    left: 8,
+                                    right: 8,
+                                    child: Column(
+                                      crossAxisAlignment:
+                                      CrossAxisAlignment.start,
+                                      children: [
+                                        Text(item.title,
+                                            style: const TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 11,
+                                                fontWeight:
+                                                FontWeight.w600)),
+                                        Row(children: [
                                           const Icon(Icons.access_time,
                                               color: AppColors.purple,
                                               size: 10),
@@ -314,12 +326,12 @@ class _NutritionScreenState extends State<NutritionScreen> {
                                               style: const TextStyle(
                                                   color: Colors.white70,
                                                   fontSize: 9)),
-                                        ],
-                                      ),
-                                    ],
+                                        ]),
+                                      ],
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
                         );
@@ -330,14 +342,83 @@ class _NutritionScreenState extends State<NutritionScreen> {
                   const SizedBox(height: 20),
 
                   // ── Recipes For You ──────────────────────────────────
-                  SectionHeader(
-                    title: 'Recipes For You',
-                    onSeeAll: () {},
-                  ),
-
+                  SectionHeader(title: 'Recipes For You', onSeeAll: () {}),
                   const SizedBox(height: 12),
 
-                  ..._recipes.map((item) => _RecipeCard(item: item)),
+                  ..._recipes.map((item) => GestureDetector(
+                    onTap: () => Navigator.pushNamed(
+                      context,
+                      AppRoutes.mealIdeaDetail,
+                      arguments: item,
+                    ),
+                    child: Container(
+                      margin: const EdgeInsets.only(bottom: 10),
+                      padding: const EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment:
+                              CrossAxisAlignment.start,
+                              children: [
+                                Text(item.title,
+                                    style: const TextStyle(
+                                        color: Colors.black,
+                                        fontSize: 15,
+                                        fontWeight: FontWeight.w700)),
+                                const SizedBox(height: 4),
+                                Row(children: [
+                                  const Icon(Icons.access_time,
+                                      color: AppColors.purple,
+                                      size: 12),
+                                  const SizedBox(width: 3),
+                                  Text(item.minutes,
+                                      style: const TextStyle(
+                                          color: Colors.black54,
+                                          fontSize: 11)),
+                                  const SizedBox(width: 8),
+                                  const Icon(
+                                      Icons.local_fire_department,
+                                      color: AppColors.purple,
+                                      size: 12),
+                                  const SizedBox(width: 3),
+                                  Text(item.cal,
+                                      style: const TextStyle(
+                                          color: Colors.black54,
+                                          fontSize: 11)),
+                                ]),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(width: 10),
+                          ClipRRect(
+                            borderRadius: BorderRadius.circular(12),
+                            child: SizedBox(
+                              width: 100,
+                              height: 85,
+                              child: Stack(
+                                fit: StackFit.expand,
+                                children: [
+                                  AppBgImage(assetPath: item.image),
+                                  const Positioned(
+                                    top: 6,
+                                    right: 6,
+                                    child: Icon(Icons.star_border,
+                                        color: Colors.white,
+                                        size: 16),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  )),
 
                   const SizedBox(height: 20),
                 ],
@@ -349,78 +430,6 @@ class _NutritionScreenState extends State<NutritionScreen> {
       bottomNavigationBar: AppBottomNavBar(
         currentIndex: _currentIndex,
         onTap: (i) => setState(() => _currentIndex = i),
-      ),
-    );
-  }
-}
-
-// ── Recipe card ────────────────────────────────────────────────────────────────
-class _RecipeCard extends StatelessWidget {
-  const _RecipeCard({required this.item});
-  final _NutritionItem item;
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 10),
-      padding: const EdgeInsets.all(10),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-      ),
-      child: Row(
-        children: [
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(item.title,
-                    style: const TextStyle(
-                        color: Colors.black,
-                        fontSize: 15,
-                        fontWeight: FontWeight.w700)),
-                const SizedBox(height: 6),
-                Row(children: [
-                  const Icon(Icons.access_time,
-                      color: AppColors.purple, size: 12),
-                  const SizedBox(width: 3),
-                  Text(item.minutes,
-                      style: const TextStyle(
-                          color: Colors.black54, fontSize: 11)),
-                ]),
-                const SizedBox(height: 3),
-                Row(children: [
-                  const Icon(Icons.local_fire_department,
-                      color: AppColors.purple, size: 12),
-                  const SizedBox(width: 3),
-                  Text(item.cal,
-                      style: const TextStyle(
-                          color: Colors.black54, fontSize: 11)),
-                ]),
-              ],
-            ),
-          ),
-          const SizedBox(width: 10),
-          ClipRRect(
-            borderRadius: BorderRadius.circular(12),
-            child: SizedBox(
-              width: 110,
-              height: 90,
-              child: Stack(
-                fit: StackFit.expand,
-                children: [
-                  AppBgImage(assetPath: item.image),
-                  const Positioned(
-                    top: 6,
-                    right: 6,
-                    child: Icon(Icons.star_border,
-                        color: Colors.white, size: 18),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ],
       ),
     );
   }
@@ -449,16 +458,20 @@ class _Badge extends StatelessWidget {
 }
 
 // ── Model ──────────────────────────────────────────────────────────────────────
-class _NutritionItem {
+class MealIdeaItem {
   final String image;
   final String title;
   final String minutes;
   final String cal;
+  final bool isVideo;
+  final List<String> ingredients;
 
-  _NutritionItem({
+  MealIdeaItem({
     required this.image,
     required this.title,
     required this.minutes,
     required this.cal,
+    required this.isVideo,
+    this.ingredients = const [],
   });
 }
