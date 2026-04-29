@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import '../screens/dashboard_screen.dart';
 import '../screens/help_screen.dart';
 import '../screens/meal_plan_creating_screen.dart';
+import '../screens/meal_plan_detail_screen.dart';
 import '../screens/meal_plan_goals_screen.dart';
 import '../screens/meal_plan_preferences_screen.dart';
+import '../screens/meal_plan_result_screen.dart';
 import '../screens/meal_plans_screen.dart';
 import '../screens/nutrition_screen.dart';
 import '../screens/progress_tracking_screen.dart';
@@ -73,7 +75,10 @@ class AppRoutes {
   static const String mealPlans = '/meal-plans';
   static const String mealPlanPreferences = '/meal-plan-preferences';
   static const String mealPlanGoals = '/meal-plan-goals';
+
   static const String mealPlanCreating = '/meal-plan-creating';
+  static const String mealPlanResult = '/meal-plan-result';
+  static const String mealPlanDetail = '/meal-plan-detail';
 }
 
 class AppRouter {
@@ -151,7 +156,11 @@ class AppRouter {
         return _slide(const MealPlanGoalsScreen(), settings);
       case AppRoutes.mealPlanCreating:
         return _slide(const MealPlanCreatingScreen(), settings);
-      default:
+      case AppRoutes.mealPlanResult:
+        return _slide(const MealPlanResultScreen(), settings);
+      case AppRoutes.mealPlanDetail:
+        return _slide(const MealPlanDetailScreen(), settings);
+        default:
         return _errorRoute(settings.name);
     }
   }

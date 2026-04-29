@@ -29,7 +29,7 @@ class _MealPlanCreatingScreenState extends State<MealPlanCreatingScreen>
     // Navigate after 4 seconds
     Timer(const Duration(seconds: 4), () {
       if (mounted) {
-        Navigator.pushReplacementNamed(context, AppRoutes.nutrition);
+        Navigator.pushReplacementNamed(context, AppRoutes.mealPlanResult);
       }
     });
   }
