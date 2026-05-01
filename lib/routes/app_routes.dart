@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../screens/community_screen.dart';
 import '../screens/dashboard_screen.dart';
 import '../screens/help_screen.dart';
 import '../screens/meal_idea_detail_screen.dart';
@@ -85,6 +86,7 @@ class AppRoutes {
   static const String mealIdeas = '/meal-ideas';
   static const String mealIdeasList = '/meal-ideas-list';
   static const String mealIdeaDetail = '/meal-idea-detail';
+  static const String community = '/community';
 }
 
 class AppRouter {
@@ -172,7 +174,9 @@ class AppRouter {
         return _slide(const MealIdeasListScreen(), settings);
       case AppRoutes.mealIdeaDetail:
         return _slide(const MealIdeaDetailScreen(), settings);
-      default:
+      case AppRoutes.community:
+        return _slide(const CommunityScreen(), settings);
+        default:
         return _errorRoute(settings.name);
     }
   }

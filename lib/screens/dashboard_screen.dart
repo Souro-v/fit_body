@@ -109,7 +109,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     _QuickIcon(
                       iconPath: 'assets/icons/ic_community.png',
                       label: 'Community',
-                      onTap: () {},
+                      onTap: () => Navigator.pushNamed(context, AppRoutes.community),
                     ),
                   ],
                 ),
