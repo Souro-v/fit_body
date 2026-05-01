@@ -15,10 +15,25 @@ class MealIdeasListScreen extends StatefulWidget {
 class _MealIdeasListScreenState extends State<MealIdeasListScreen> {
   int _currentIndex = 1;
   String _selectedTab = 'Breakfast';
-
   final _tabs = ['Breakfast', 'Lunch', 'Dinner'];
 
-  final _recommended = [
+  // ── Breakfast data ─────────────────────────────────────────────────────────
+  final _breakfastBanner = MealIdeaItem(
+    image: 'assets/images/meal_spinach_omelette.png',
+    title: 'Spinach And Tomato Omelette',
+    minutes: '10 Minutes',
+    cal: '220 Cal',
+    isVideo: false,
+    ingredients: [
+      '2-3 eggs',
+      'A handful of fresh spinach',
+      '1 small tomato',
+      'Salt and pepper to taste',
+      'Olive oil or butter',
+    ],
+  );
+
+  final _breakfastRecommended = [
     MealIdeaItem(
       image: 'assets/images/fav_smoothie.png',
       title: 'Fruit Smoothie',
@@ -35,7 +50,7 @@ class _MealIdeasListScreenState extends State<MealIdeasListScreen> {
     ),
   ];
 
-  final _recipes = [
+  final _breakfastRecipes = [
     MealIdeaItem(
       image: 'assets/images/search_yogurt.png',
       title: 'Delights With Greek Yogurt',
@@ -51,6 +66,131 @@ class _MealIdeasListScreenState extends State<MealIdeasListScreen> {
       isVideo: false,
     ),
   ];
+
+  // ── Lunch data ─────────────────────────────────────────────────────────────
+  final _lunchBanner = MealIdeaItem(
+    image: 'assets/images/meal_salmon_avocado.png',
+    title: 'Salmon And Avocado Salad',
+    minutes: '15 Minutes',
+    cal: '300 Cal',
+    isVideo: false,
+  );
+
+  final _lunchRecommended = [
+    MealIdeaItem(
+      image: 'assets/images/meal_quinoa_salad.png',
+      title: 'Quinoa Salad',
+      minutes: '25 Minutes',
+      cal: '300 Cal',
+      isVideo: true,
+    ),
+    MealIdeaItem(
+      image: 'assets/images/meal_burrito.png',
+      title: 'Burrito With Vegetables',
+      minutes: '20 Minutes',
+      cal: '250 Cal',
+      isVideo: true,
+    ),
+  ];
+
+  final _lunchRecipes = [
+    MealIdeaItem(
+      image: 'assets/images/meal_teriyaki.png',
+      title: 'Teriyaki Chicken With Brown Rice',
+      minutes: '45 Minutes',
+      cal: '375 Cal',
+      isVideo: false,
+      ingredients: [
+        'Chicken breast',
+        'Teriyaki sauce',
+        'Brown rice',
+        'Fresh broccoli',
+      ],
+    ),
+    MealIdeaItem(
+      image: 'assets/images/nutrition_salmon.png',
+      title: 'Baked Salmon',
+      minutes: '30 Minutes',
+      cal: '350 Cal',
+      isVideo: false,
+    ),
+  ];
+
+  // ── Dinner data ────────────────────────────────────────────────────────────
+  final _dinnerBanner = MealIdeaItem(
+    image: 'assets/images/meal_grilled_chicken.png',
+    title: 'Grilled Chicken Salad',
+    minutes: '20 Minutes',
+    cal: '240 Cal',
+    isVideo: false,
+  );
+
+  final _dinnerRecommended = [
+    MealIdeaItem(
+      image: 'assets/images/meal_chickpea_salad.png',
+      title: 'Chickpea Salad',
+      minutes: '20 Minutes',
+      cal: '300 Cal',
+      isVideo: true,
+      ingredients: [
+        '1 cup cooked chickpeas',
+        '1 tomato cut into cubes',
+        'Sliced cucumber',
+        'Chopped red onion',
+        'Chopped fresh parsley',
+        '1 tablespoon balsamic vinaigrette dressing',
+      ],
+    ),
+    MealIdeaItem(
+      image: 'assets/images/meal_lentil_soup.png',
+      title: 'Lentil Soup',
+      minutes: '30 Minutes',
+      cal: '200 Cal',
+      isVideo: true,
+    ),
+  ];
+
+  final _dinnerRecipes = [
+    MealIdeaItem(
+      image: 'assets/images/search_turkey.png',
+      title: 'Turkey And Avocado Wrap',
+      minutes: '15 Minutes',
+      cal: '230 Cal',
+      isVideo: false,
+    ),
+    MealIdeaItem(
+      image: 'assets/images/meal_chicken_spinach.png',
+      title: 'Chicken Breast Stuffed With Spinach',
+      minutes: '30 Minutes',
+      cal: '250 Cal',
+      isVideo: false,
+      ingredients: [
+        '1 boneless, skinless chicken breast (150 g)',
+        '1 cup fresh spinach',
+        '30 g crumbled feta cheese',
+        'Lemon juice, garlic powder, salt and pepper (for seasoning)',
+      ],
+    ),
+  ];
+
+  // ── Getters ────────────────────────────────────────────────────────────────
+  MealIdeaItem get _currentBanner {
+    if (_selectedTab == 'Lunch') return _lunchBanner;
+    if (_selectedTab == 'Dinner') return _dinnerBanner;
+    return _breakfastBanner;
+  }
+
+  List<MealIdeaItem> get _currentRecommended {
+    if (_selectedTab == 'Lunch') return _lunchRecommended;
+    if (_selectedTab == 'Dinner') return _dinnerRecommended;
+    return _breakfastRecommended;
+  }
+
+  List<MealIdeaItem> get _currentRecipes {
+    if (_selectedTab == 'Lunch') return _lunchRecipes;
+    if (_selectedTab == 'Dinner') return _dinnerRecipes;
+    return _breakfastRecipes;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -138,6 +278,7 @@ class _MealIdeasListScreenState extends State<MealIdeasListScreen> {
 
             const SizedBox(height: 16),
 
+            // ── Content ──────────────────────────────────────────────────
             Expanded(
               child: ListView(
                 padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -147,20 +288,7 @@ class _MealIdeasListScreenState extends State<MealIdeasListScreen> {
                     onTap: () => Navigator.pushNamed(
                       context,
                       AppRoutes.mealIdeaDetail,
-                      arguments: MealIdeaItem(
-                        image: 'assets/images/meal_spinach_omelette.png',
-                        title: 'Spinach And Tomato Omelette',
-                        minutes: '10 Minutes',
-                        cal: '220 Cal',
-                        isVideo: false,
-                        ingredients: [
-                          '2-3 eggs',
-                          'A handful of fresh spinach',
-                          '1 small tomato',
-                          'Salt and pepper to taste',
-                          'Olive oil or butter',
-                        ],
-                      ),
+                      arguments: _currentBanner,
                     ),
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(16),
@@ -169,9 +297,7 @@ class _MealIdeasListScreenState extends State<MealIdeasListScreen> {
                         child: Stack(
                           fit: StackFit.expand,
                           children: [
-                            AppBgImage(
-                                assetPath:
-                                'assets/images/meal_spinach_omelette.png'),
+                            AppBgImage(assetPath: _currentBanner.image),
                             Container(
                               decoration: BoxDecoration(
                                 gradient: LinearGradient(
@@ -189,7 +315,7 @@ class _MealIdeasListScreenState extends State<MealIdeasListScreen> {
                               right: 12,
                               child: _Badge(label: 'Recipe Of The Day'),
                             ),
-                            const Positioned(
+                            Positioned(
                               bottom: 12,
                               left: 12,
                               right: 12,
@@ -197,33 +323,34 @@ class _MealIdeasListScreenState extends State<MealIdeasListScreen> {
                                 crossAxisAlignment:
                                 CrossAxisAlignment.start,
                                 children: [
-                                  Text('Spinach And Tomato Omelette',
-                                      style: TextStyle(
+                                  Text(_currentBanner.title,
+                                      style: const TextStyle(
                                           color: Colors.white,
                                           fontSize: 15,
                                           fontWeight: FontWeight.w700)),
-                                  SizedBox(height: 4),
+                                  const SizedBox(height: 4),
                                   Row(
                                     children: [
-                                      Icon(Icons.access_time,
+                                      const Icon(Icons.access_time,
                                           color: AppColors.purple,
                                           size: 12),
-                                      SizedBox(width: 3),
-                                      Text('10 Minutes',
-                                          style: TextStyle(
+                                      const SizedBox(width: 3),
+                                      Text(_currentBanner.minutes,
+                                          style: const TextStyle(
                                               color: Colors.white70,
                                               fontSize: 11)),
-                                      SizedBox(width: 10),
-                                      Icon(Icons.local_fire_department,
+                                      const SizedBox(width: 10),
+                                      const Icon(
+                                          Icons.local_fire_department,
                                           color: AppColors.purple,
                                           size: 12),
-                                      SizedBox(width: 3),
-                                      Text('220 Cal',
-                                          style: TextStyle(
+                                      const SizedBox(width: 3),
+                                      Text(_currentBanner.cal,
+                                          style: const TextStyle(
                                               color: Colors.white70,
                                               fontSize: 11)),
-                                      Spacer(),
-                                      Icon(Icons.star_border,
+                                      const Spacer(),
+                                      const Icon(Icons.star_border,
                                           color: Colors.white, size: 18),
                                     ],
                                   ),
@@ -246,9 +373,9 @@ class _MealIdeasListScreenState extends State<MealIdeasListScreen> {
                     height: 160,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: _recommended.length,
+                      itemCount: _currentRecommended.length,
                       itemBuilder: (context, index) {
-                        final item = _recommended[index];
+                        final item = _currentRecommended[index];
                         return GestureDetector(
                           onTap: () => Navigator.pushNamed(
                             context,
@@ -342,10 +469,11 @@ class _MealIdeasListScreenState extends State<MealIdeasListScreen> {
                   const SizedBox(height: 20),
 
                   // ── Recipes For You ──────────────────────────────────
-                  SectionHeader(title: 'Recipes For You', onSeeAll: () {}),
+                  SectionHeader(
+                      title: 'Recipes For You', onSeeAll: () {}),
                   const SizedBox(height: 12),
 
-                  ..._recipes.map((item) => GestureDetector(
+                  ..._currentRecipes.map((item) => GestureDetector(
                     onTap: () => Navigator.pushNamed(
                       context,
                       AppRoutes.mealIdeaDetail,
@@ -369,7 +497,8 @@ class _MealIdeasListScreenState extends State<MealIdeasListScreen> {
                                     style: const TextStyle(
                                         color: Colors.black,
                                         fontSize: 15,
-                                        fontWeight: FontWeight.w700)),
+                                        fontWeight:
+                                        FontWeight.w700)),
                                 const SizedBox(height: 4),
                                 Row(children: [
                                   const Icon(Icons.access_time,
