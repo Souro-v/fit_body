@@ -192,7 +192,7 @@ class _DiscussionForumContent extends StatelessWidget {
           margin: const EdgeInsets.only(bottom: 8),
           padding: const EdgeInsets.all(12),
           decoration: BoxDecoration(
-            color: AppColors.purple.withOpacity(0.3),
+            color: AppColors.purple.withValues(alpha: 0.3),
             borderRadius: BorderRadius.circular(12),
           ),
           child: Text(f.title,
@@ -204,11 +204,9 @@ class _DiscussionForumContent extends StatelessWidget {
     );
   }
 }
-
 //////////////////// Challenges ////////////////////
-
 class _ChallengesContent extends StatelessWidget {
-  const _ChallengesContent({super.key});
+  const _ChallengesContent();
 
   final List<_ChallengeItem> _challenges = const [
     _ChallengeItem(
