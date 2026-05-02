@@ -62,7 +62,7 @@ class _SetupHeightScreenState extends State<SetupHeightScreen> {
                       Container(
                         width: 60,
                         decoration: BoxDecoration(
-                          color: const Color(0xFFB39DDB).withOpacity(0.5),
+                          color: const Color(0xFFB39DDB).withValues(alpha: 0.5),
                           borderRadius: BorderRadius.circular(8),
                         ),
                         child: ListView.builder(

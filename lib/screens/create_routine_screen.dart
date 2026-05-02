@@ -1,6 +1,7 @@
 // lib/screens/create_routine_screen.dart
 
 import 'package:flutter/material.dart';
+import '../constants/app_assets.dart';
 import '../widgets/app_image.dart';
 import '../widgets/app_widgets.dart';
 import '../routes/app_routes.dart';
@@ -17,49 +18,49 @@ class _CreateRoutineScreenState extends State<CreateRoutineScreen> {
 
   final _exercises = [
     ExItem(
-      image: 'assets/images/ex_barbell_rows.png',
+      image: AppAssets.exBarbellRows,
       title: 'Barbell Rows',
       minutes: '10 Minutes',
       rep: '3 Rep',
     ),
     ExItem(
-      image: 'assets/images/ex_hammer_curls.png',
+      image: AppAssets.exHammerCurls,
       title: 'Hammer Curls',
       minutes: '15 Minutes',
       rep: '4 Rep',
     ),
     ExItem(
-      image: 'assets/images/ex_leg_press.png',
+      image: AppAssets.exLegPress,
       title: 'Leg Press',
       minutes: '15 Minutes',
       rep: '4 Rep',
     ),
     ExItem(
-      image: 'assets/images/fav_split_strength.png',
+      image: AppAssets.favSplitStrength,
       title: 'Plank',
       minutes: '10 Minutes',
       rep: '3 Rep',
     ),
     ExItem(
-      image: 'assets/images/ex_cable_chest.png',
+      image: AppAssets.exCableChest,
       title: 'Cable Chest Press',
       minutes: '10 Minutes',
       rep: '3 Rep',
     ),
     ExItem(
-      image: 'assets/images/ex_tricep_dips.png',
+      image: AppAssets.exTricepDips,
       title: 'Tricep Dips',
       minutes: '15 Minutes',
       rep: '4 Rep',
     ),
     ExItem(
-      image: 'assets/images/ex_push_ups.png',
+      image: AppAssets.exPushUps,
       title: 'Push-Ups',
       minutes: '10 Minutes',
       rep: '3 Rep',
     ),
     ExItem(
-      image: 'assets/images/fav_upper_body.png',
+      image: AppAssets.favUpperBody,
       title: 'TRX Suspension Straps',
       minutes: '10 Minutes',
       rep: '3 Rep',

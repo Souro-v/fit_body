@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../screens/challenge_detail_screen.dart';
 import '../screens/community_screen.dart';
 import '../screens/dashboard_screen.dart';
 import '../screens/help_screen.dart';
@@ -79,7 +80,6 @@ class AppRoutes {
   static const String mealPlans = '/meal-plans';
   static const String mealPlanPreferences = '/meal-plan-preferences';
   static const String mealPlanGoals = '/meal-plan-goals';
-
   static const String mealPlanCreating = '/meal-plan-creating';
   static const String mealPlanResult = '/meal-plan-result';
   static const String mealPlanDetail = '/meal-plan-detail';
@@ -87,6 +87,9 @@ class AppRoutes {
   static const String mealIdeasList = '/meal-ideas-list';
   static const String mealIdeaDetail = '/meal-idea-detail';
   static const String community = '/community';
+  static const String challengeDetail = '/challenge-detail';
+  static const String challengeRounds = '/challenge-rounds';
+  static const String challengeVideo = '/challenge-video';
 }
 
 class AppRouter {
@@ -176,7 +179,13 @@ class AppRouter {
         return _slide(const MealIdeaDetailScreen(), settings);
       case AppRoutes.community:
         return _slide(const CommunityScreen(), settings);
-        default:
+      case AppRoutes.challengeDetail:
+        return _slide(const ChallengeDetailScreen(), settings);
+      case AppRoutes.challengeRounds:
+        return _slide(const ChallengeRoundsScreen(), settings);
+      case AppRoutes.challengeVideo:
+        return _slide(const ChallengeVideoScreen(), settings);
+      default:
         return _errorRoute(settings.name);
     }
   }

@@ -72,7 +72,7 @@ class _SetupProfileScreenState extends State<SetupProfileScreen> {
               // Profile photo section
               Container(
                 width: double.infinity,
-                color: const Color(0xFFB39DDB).withOpacity(0.35),
+                color: const Color(0xFFB39DDB).withValues(alpha: 0.35),
                 padding: const EdgeInsets.symmetric(vertical: 24),
                 child: Center(
                   child: Stack(

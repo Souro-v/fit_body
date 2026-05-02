@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class SetupBackButton extends StatelessWidget {
+  const SetupBackButton({super.key});
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -18,7 +20,7 @@ class SetupBackButton extends StatelessWidget {
 }
 
 class ContinueButton extends StatelessWidget {
-  const ContinueButton({required this.onTap});
+  const ContinueButton({super.key, required this.onTap});
   final VoidCallback? onTap;
 
   @override
@@ -30,7 +32,7 @@ class ContinueButton extends StatelessWidget {
         width: double.infinity,
         decoration: BoxDecoration(
           color: onTap == null
-              ? const Color(0xFF2D2D2D).withOpacity(0.5)
+              ? const Color(0xFF2D2D2D).withValues(alpha: 0.5)
               : const Color(0xFF2D2D2D),
           borderRadius: BorderRadius.circular(30),
           border: Border.all(color: Colors.white12),

@@ -8,6 +8,8 @@
 //   • title     → headline text shown on the card
 // ─────────────────────────────────────────────────────────────────────────────
 
+import '../constants/app_assets.dart';
+
 class OnboardingPageModel {
   final String bgImage;   // background photo
   final String iconPath;  // yellow illustration icons (empty = no icons card)
@@ -28,28 +30,28 @@ class OnboardingPageModel {
 const List<OnboardingPageModel> kOnboardingPages = [
   // 2-A  Splash / welcome screen (no card, just the logo overlay)
   OnboardingPageModel(
-    bgImage: 'assets/images/splash_bg.png',
+    bgImage: AppAssets.splashBg,
     title: 'Welcome to FitBody',
     isSplash: true,
   ),
 
   // 2-B  Active lifestyle
   OnboardingPageModel(
-    bgImage: 'assets/images/onboard1_bg.png',
+    bgImage: AppAssets.onboard1Bg,
     iconPath: 'assets/icons/ic_active_lifestyle.png',
     title: 'Start Your Journey Towards A More Active Lifestyle',
   ),
 
   // 2-C  Nutrition
   OnboardingPageModel(
-    bgImage: 'assets/images/onboard2_bg.png',
+    bgImage: AppAssets.onboard2Bg,
     iconPath: 'assets/icons/ic_nutrition.png',
     title: 'Find Nutrition Tips That Fit Your Lifestyle',
   ),
 
   // 2-D  Community
   OnboardingPageModel(
-    bgImage: 'assets/images/onboard3_bg.png',
+    bgImage: AppAssets.onboard3Bg,
     iconPath: 'assets/icons/ic_community.png',
     title: 'A Community For You, Challenge Yourself',
   ),

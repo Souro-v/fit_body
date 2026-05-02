@@ -1,3 +1,4 @@
+import 'package:fit_body/constants/app_assets.dart';
 import 'package:flutter/material.dart';
 import '../../../routes/app_routes.dart';
 import '../../../widgets/app_image.dart';
@@ -12,7 +13,7 @@ class SetupIntroScreen extends StatelessWidget {
       body: Stack(
         fit: StackFit.expand,
         children: [
-          AppBgImage(assetPath: 'assets/images/setup_bg.png'),
+          AppBgImage(assetPath:AppAssets.setupBg),
           // gradient overlay
           Container(
             decoration: BoxDecoration(
@@ -47,7 +48,7 @@ class SetupIntroScreen extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.all(16),
                     decoration: BoxDecoration(
-                      color: const Color(0xFFB39DDB).withOpacity(0.85),
+                      color: const Color(0xFFB39DDB).withValues(alpha: 0.85),
                       borderRadius: BorderRadius.circular(16),
                     ),
                     child: const Text(

@@ -1,4 +1,5 @@
 
+import 'package:fit_body/constants/app_assets.dart';
 import 'package:flutter/material.dart';
 import '../../routes/app_routes.dart';
 class SetupGenderScreen extends StatefulWidget {
@@ -56,13 +57,13 @@ class _SetupGenderScreenState extends State<SetupGenderScreen> {
                 children: [
                   _GenderOption(
                     label: 'Male',
-                    iconPath: 'assets/icons/ic_male.png',
+                    iconPath:AppAssets.icMale,
                     selected: _selected == 'Male',
                     onTap: () => setState(() => _selected = 'Male'),
                   ),
                   _GenderOption(
                     label: 'Female',
-                    iconPath: 'assets/icons/ic_female.png',
+                    iconPath: AppAssets.icFemale,
                     selected: _selected == 'Female',
                     onTap: () => setState(() => _selected = 'Female'),
                   ),
