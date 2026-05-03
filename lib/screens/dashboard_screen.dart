@@ -51,7 +51,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     ),
                     // Search
                     IconButton(
-                      onPressed: ()=> Navigator.pushNamed(context, AppRoutes.search),
+                      onPressed: () =>
+                          Navigator.pushNamed(context, AppRoutes.search),
                       icon: const Icon(
                         Icons.search,
                         color: Colors.white70,
@@ -60,7 +61,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     ),
                     // Notification
                     IconButton(
-                      onPressed: () => Navigator.pushNamed(context, AppRoutes.notifications),
+                      onPressed: () =>
+                          Navigator.pushNamed(context, AppRoutes.notifications),
                       icon: const Icon(
                         Icons.notifications_none,
                         color: Colors.white70,
@@ -97,19 +99,24 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     _QuickIcon(
                       iconPath: 'assets/icons/ic_progress.png',
                       label: 'Progress\nTracking',
-                      onTap: ()=> Navigator.pushNamed(context, AppRoutes.progressTracking),
+                      onTap: () => Navigator.pushNamed(
+                        context,
+                        AppRoutes.progressTracking,
+                      ),
                     ),
                     _Divider(),
                     _QuickIcon(
                       iconPath: 'assets/icons/ic_nutrition.png',
                       label: 'Nutrition',
-                      onTap: ()  => Navigator.pushNamed(context, AppRoutes.nutrition),
+                      onTap: () =>
+                          Navigator.pushNamed(context, AppRoutes.nutrition),
                     ),
                     _Divider(),
                     _QuickIcon(
                       iconPath: 'assets/icons/ic_community.png',
                       label: 'Community',
-                      onTap: () => Navigator.pushNamed(context, AppRoutes.community),
+                      onTap: () =>
+                          Navigator.pushNamed(context, AppRoutes.community),
                     ),
                   ],
                 ),
@@ -132,7 +139,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     ),
                     const Spacer(),
                     GestureDetector(
-                      onTap: () => Navigator.pushNamed(context, AppRoutes.recommendations),
+                      onTap: () => Navigator.pushNamed(
+                        context,
+                        AppRoutes.recommendations,
+                      ),
                       child: const Row(
                         children: [
                           Text(
@@ -183,58 +193,62 @@ class _DashboardScreenState extends State<DashboardScreen> {
               const SizedBox(height: 20),
 
               // ── Weekly Challenge ────────────────────────────────────────
-              Container(
-                color: const Color(0xFFB39DDB).withValues(alpha: 0.25),
-                padding: const EdgeInsets.all(20),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(16),
-                  child: SizedBox(
-                    height: 120,
-                    child: Stack(
-                      fit: StackFit.expand,
-                      children: [
-                        AppBgImage(
-                          assetPath: 'assets/images/weekly_challenge.png',
-                        ),
-                        Container(
-                          decoration: BoxDecoration(
-                            gradient: LinearGradient(
-                              colors: [
-                                Colors.black.withValues(alpha: 0.7),
-                                Colors.transparent,
-                              ],
-                              begin: Alignment.centerLeft,
-                              end: Alignment.centerRight,
+              GestureDetector(
+                onTap: () =>
+                    Navigator.pushNamed(context, AppRoutes.weeklyChallenge),
+                child: Container(
+                  color: const Color(0xFFB39DDB).withValues(alpha: 0.25),
+                  padding: const EdgeInsets.all(20),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(16),
+                    child: SizedBox(
+                      height: 120,
+                      child: Stack(
+                        fit: StackFit.expand,
+                        children: [
+                          AppBgImage(
+                            assetPath: 'assets/images/weekly_challenge.png',
+                          ),
+                          Container(
+                            decoration: BoxDecoration(
+                              gradient: LinearGradient(
+                                colors: [
+                                  Colors.black.withValues(alpha: 0.7),
+                                  Colors.transparent,
+                                ],
+                                begin: Alignment.centerLeft,
+                                end: Alignment.centerRight,
+                              ),
                             ),
                           ),
-                        ),
-                        const Padding(
-                          padding: EdgeInsets.all(16),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                'Weekly\nChallenge',
-                                style: TextStyle(
-                                  color: Color(0xFFE8E44A),
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.w800,
-                                  height: 1.2,
+                          const Padding(
+                            padding: EdgeInsets.all(16),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text(
+                                  'Weekly\nChallenge',
+                                  style: TextStyle(
+                                    color: Color(0xFFE8E44A),
+                                    fontSize: 18,
+                                    fontWeight: FontWeight.w800,
+                                    height: 1.2,
+                                  ),
                                 ),
-                              ),
-                              SizedBox(height: 6),
-                              Text(
-                                'Plank With Hip Twist',
-                                style: TextStyle(
-                                  color: Colors.white70,
-                                  fontSize: 12,
+                                SizedBox(height: 6),
+                                Text(
+                                  'Plank With Hip Twist',
+                                  style: TextStyle(
+                                    color: Colors.white70,
+                                    fontSize: 12,
+                                  ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ),

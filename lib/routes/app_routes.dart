@@ -38,6 +38,7 @@ import '../screens/settings_screen.dart';
 import '../screens/notification_settings_screen.dart';
 import '../screens/password_settings_screen.dart';
 import '../screens/notifications_screen.dart';
+import '../screens/weekly_challenge_screen.dart';
 import '../screens/workout_screen.dart';
 import '../screens/workout_detail_screen.dart';
 import '../screens/create_routine_screen.dart';
@@ -94,6 +95,7 @@ class AppRoutes {
   static const String challengeVideo = '/challenge-video';
   static const String recommendations      = '/recommendations';
   static const String recommendationDetail = '/recommendation-detail';
+  static const String weeklyChallenge = '/weekly-challenge';
 
 }
 
@@ -194,6 +196,8 @@ class AppRouter {
         return _slide(const RecommendationsScreen(), settings);
       case AppRoutes.recommendationDetail:
         return _slide(const RecommendationDetailScreen(), settings);
+      case AppRoutes.weeklyChallenge:
+        return _slide(const WeeklyChallengeScreen(), settings);
       default:
         return _errorRoute(settings.name);
     }
