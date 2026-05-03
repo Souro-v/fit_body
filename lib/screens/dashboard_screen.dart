@@ -132,7 +132,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     ),
                     const Spacer(),
                     GestureDetector(
-                      onTap: () {},
+                      onTap: () => Navigator.pushNamed(context, AppRoutes.recommendations),
                       child: const Row(
                         children: [
                           Text(

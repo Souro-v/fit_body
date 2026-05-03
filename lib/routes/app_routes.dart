@@ -14,6 +14,8 @@ import '../screens/meal_plan_result_screen.dart';
 import '../screens/meal_plans_screen.dart';
 import '../screens/nutrition_screen.dart';
 import '../screens/progress_tracking_screen.dart';
+import '../screens/recommendation_detail_screen.dart';
+import '../screens/recommendations_screen.dart';
 import '../screens/search_screen.dart';
 import '../screens/setup/setup_activity_screen.dart';
 import '../screens/setup/setup_age_screen.dart';
@@ -90,6 +92,9 @@ class AppRoutes {
   static const String challengeDetail = '/challenge-detail';
   static const String challengeRounds = '/challenge-rounds';
   static const String challengeVideo = '/challenge-video';
+  static const String recommendations      = '/recommendations';
+  static const String recommendationDetail = '/recommendation-detail';
+
 }
 
 class AppRouter {
@@ -185,6 +190,10 @@ class AppRouter {
         return _slide(const ChallengeRoundsScreen(), settings);
       case AppRoutes.challengeVideo:
         return _slide(const ChallengeVideoScreen(), settings);
+      case AppRoutes.recommendations:
+        return _slide(const RecommendationsScreen(), settings);
+      case AppRoutes.recommendationDetail:
+        return _slide(const RecommendationDetailScreen(), settings);
       default:
         return _errorRoute(settings.name);
     }
