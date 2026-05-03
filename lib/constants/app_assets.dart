@@ -1,8 +1,6 @@
 // lib/constants/app_assets.dart
-
 class AppAssets {
   AppAssets._();
-
   // ── Background Images ──────────────────────────────────────────────────────
   static const splashBg          = 'assets/images/splash_bg.png';
   static const onboard1Bg        = 'assets/images/onboard1_bg.png';
@@ -25,7 +23,6 @@ class AppAssets {
   static const workoutSquats     = 'assets/images/workout_squats.png';
   static const workoutDumbbellMan = 'assets/images/workout_dumbbell_man.png';
   static const workoutAdvVideo   = 'assets/images/workout_advanced_video.png';
-
   // ── Exercise Images ────────────────────────────────────────────────────────
   static const exBarbellRows     = 'assets/images/ex_barbell_rows.png';
   static const exHammerCurls     = 'assets/images/ex_hammer_curls.png';
@@ -33,7 +30,6 @@ class AppAssets {
   static const exCableChest      = 'assets/images/ex_cable_chest.png';
   static const exTricepDips      = 'assets/images/ex_tricep_dips.png';
   static const exPushUps         = 'assets/images/ex_push_ups.png';
-
   // ── Favorites Images ───────────────────────────────────────────────────────
   static const favUpperBody      = 'assets/images/fav_upper_body.png';
   static const favPullOut        = 'assets/images/fav_pull_out.png';
@@ -45,7 +41,6 @@ class AppAssets {
   static const favLowerBody      = 'assets/images/fav_lower_body.png';
   static const favSmoothie       = 'assets/images/fav_smoothie.png';
   static const favHydrate        = 'assets/images/fav_hydrate.png';
-
   // ── Search Images ──────────────────────────────────────────────────────────
   static const searchSquat       = 'assets/images/search_squat.png';
   static const searchFullBody    = 'assets/images/search_full_body.png';
@@ -53,12 +48,10 @@ class AppAssets {
   static const searchYogurt      = 'assets/images/search_yogurt.png';
   static const searchSplit       = 'assets/images/fav_split_strength.png';
   static const searchTurkey      = 'assets/images/search_turkey.png';
-
   // ── Nutrition Images ───────────────────────────────────────────────────────
   static const nutritionBanner   = 'assets/images/nutrition_banner.png';
   static const nutritionQuinoa   = 'assets/images/nutrition_quinoa.png';
   static const nutritionSalmon   = 'assets/images/nutrition_salmon.png';
-
   // ── Meal Plan Images ───────────────────────────────────────────────────────
   static const mealPlanBanner    = 'assets/images/meal_plan_banner.png';
   static const mealSpinach       = 'assets/images/meal_spinach_omelette.png';
@@ -73,16 +66,13 @@ class AppAssets {
   static const mealChickpeaSalad = 'assets/images/meal_chickpea_salad.png';
   static const mealLentilSoup    = 'assets/images/meal_lentil_soup.png';
   static const mealChickenSpinach = 'assets/images/meal_chicken_spinach.png';
-
   // ── Weekly Challenge ───────────────────────────────────────────────────────
   static const weeklyChallenge   = 'assets/images/weekly_challenge.png';
   static const article1          = 'assets/images/article1.png';
   static const article2          = 'assets/images/article2.png';
-
   // ── Dashboard Thumbnails ───────────────────────────────────────────────────
   static const workoutThumbDash1 = 'assets/images/workout_thumb1.png';
   static const workoutThumbDash2 = 'assets/images/workout_thumb2.png';
-
   // ── Icons ──────────────────────────────────────────────────────────────────
   static const icActiveLIfestyle = 'assets/icons/ic_active_lifestyle.png';
   static const icNutrition       = 'assets/icons/ic_nutrition.png';

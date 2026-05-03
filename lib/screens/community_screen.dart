@@ -33,11 +33,34 @@ class _CommunityScreenState extends State<CommunityScreen> {
       subtitle: 'About different types of cardio workouts',
       time: 'Today 17:05',
     ),
+    _ForumItem(
+      title: 'Strength Training Techniques',
+      subtitle: 'Strategies for improving flexibility and joint mobility to prevent injuries',
+      time: 'Today 17:05',
+    ),
   ];
 
   final _discussions = [
     _DiscussionItem(
-      text: 'Lorem ipsum dolor sit amet consectetur.',
+      text: 'Lorem ipsum dolor sit amet consectetur. Tortor aenean suspendisse pretium nunc non facilisi.',
+      likes: '30,254',
+      comments: '12,254',
+      views: '1,254',
+    ),
+    _DiscussionItem(
+      text: 'Lorem ipsum dolor sit amet consectetur. Tortor aenean suspendisse pretium nunc non facilisi.',
+      likes: '30,254',
+      comments: '12,254',
+      views: '1,254',
+    ),
+    _DiscussionItem(
+      text: 'Lorem ipsum dolor sit amet consectetur. Tortor aenean suspendisse pretium nunc non facilisi.',
+      likes: '30,254',
+      comments: '12,254',
+      views: '1,254',
+    ),
+    _DiscussionItem(
+      text: 'Lorem ipsum dolor sit amet consectetur. Tortor aenean suspendisse pretium nunc non facilisi.',
       likes: '30,254',
       comments: '12,254',
       views: '1,254',
@@ -51,7 +74,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            // Top Bar
+            // ── Top bar ──────────────────────────────────────────────────
             Padding(
               padding: const EdgeInsets.fromLTRB(20, 16, 20, 0),
               child: Row(
@@ -76,8 +99,8 @@ class _CommunityScreenState extends State<CommunityScreen> {
                   IconButton(
                     onPressed: () => Navigator.pushNamed(
                         context, AppRoutes.notifications),
-                    icon:
-                    const Icon(Icons.notifications_none, color: Colors.white70),
+                    icon: const Icon(Icons.notifications_none,
+                        color: Colors.white70),
                   ),
                   IconButton(
                     onPressed: () =>
@@ -91,7 +114,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
 
             const SizedBox(height: 12),
 
-            // Tabs
+            // ── Tabs ─────────────────────────────────────────────────────
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Row(
@@ -117,9 +140,11 @@ class _CommunityScreenState extends State<CommunityScreen> {
                         alignment: Alignment.center,
                         child: Text(tab,
                             style: TextStyle(
-                                color:
-                                selected ? Colors.black : Colors.white70,
-                                fontWeight: FontWeight.w600)),
+                                color: selected
+                                    ? Colors.black
+                                    : Colors.white70,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 13)),
                       ),
                     ),
                   );
@@ -129,6 +154,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
 
             const SizedBox(height: 16),
 
+            // ── Content ──────────────────────────────────────────────────
             Expanded(
               child: _selectedTab == 'Discussion Forum'
                   ? _DiscussionForumContent(
@@ -150,8 +176,7 @@ class _CommunityScreenState extends State<CommunityScreen> {
   }
 }
 
-//////////////////// Discussion ////////////////////
-
+// ── Discussion Forum content ───────────────────────────────────────────────────
 class _DiscussionForumContent extends StatelessWidget {
   const _DiscussionForumContent({
     required this.banner,
@@ -170,11 +195,65 @@ class _DiscussionForumContent extends StatelessWidget {
     return ListView(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       children: [
+        // Banner
         ClipRRect(
           borderRadius: BorderRadius.circular(16),
           child: SizedBox(
             height: 200,
-            child: AppBgImage(assetPath: banner),
+            child: Stack(
+              fit: StackFit.expand,
+              children: [
+                AppBgImage(assetPath: banner),
+                Container(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      colors: [
+                        Colors.transparent,
+                        Colors.black.withValues(alpha: 0.8),
+                      ],
+                    ),
+                  ),
+                ),
+                const Positioned(
+                  bottom: 12,
+                  left: 12,
+                  right: 12,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text('Cycling Challenge',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w700)),
+                      SizedBox(height: 4),
+                      Row(
+                        children: [
+                          Icon(Icons.access_time,
+                              color: AppColors.purple, size: 12),
+                          SizedBox(width: 3),
+                          Text('15 Minutes',
+                              style: TextStyle(
+                                  color: Colors.white70, fontSize: 11)),
+                          SizedBox(width: 10),
+                          Icon(Icons.local_fire_department,
+                              color: AppColors.purple, size: 12),
+                          SizedBox(width: 3),
+                          Text('100 Kcal',
+                              style: TextStyle(
+                                  color: Colors.white70, fontSize: 11)),
+                          Spacer(),
+                          Icon(Icons.star_border,
+                              color: Colors.white, size: 18),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
 
@@ -188,15 +267,119 @@ class _DiscussionForumContent extends StatelessWidget {
 
         const SizedBox(height: 12),
 
+        // Forums list
         ...forums.map((f) => Container(
           margin: const EdgeInsets.only(bottom: 8),
-          padding: const EdgeInsets.all(12),
+          padding: const EdgeInsets.symmetric(
+              horizontal: 14, vertical: 10),
           decoration: BoxDecoration(
             color: AppColors.purple.withValues(alpha: 0.3),
             borderRadius: BorderRadius.circular(12),
           ),
-          child: Text(f.title,
-              style: const TextStyle(color: Colors.white)),
+          child: Row(
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(f.title,
+                        style: const TextStyle(
+                            color: AppColors.yellow,
+                            fontSize: 13,
+                            fontWeight: FontWeight.w600)),
+                    const SizedBox(height: 3),
+                    Text(f.subtitle,
+                        style: const TextStyle(
+                            color: Colors.white70, fontSize: 11)),
+                  ],
+                ),
+              ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  const Text('See All',
+                      style: TextStyle(
+                          color: AppColors.yellow, fontSize: 11)),
+                  const SizedBox(height: 3),
+                  Text(f.time,
+                      style: const TextStyle(
+                          color: Colors.white54, fontSize: 10)),
+                ],
+              ),
+            ],
+          ),
+        )),
+
+        const SizedBox(height: 20),
+
+        // Discussions
+        ...discussions.map((item) => Container(
+          margin: const EdgeInsets.only(bottom: 12),
+          padding: const EdgeInsets.all(14),
+          decoration: BoxDecoration(
+            color: AppColors.card,
+            borderRadius: BorderRadius.circular(16),
+            border: Border.all(
+                color: AppColors.purple.withValues(alpha: 0.3)),
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  CircleAvatar(
+                    radius: 18,
+                    backgroundColor: AppColors.purple,
+                    backgroundImage: user.profilePhoto != null
+                        ? FileImage(user.profilePhoto!)
+                        : const AssetImage(
+                        'assets/images/profile_photo.png')
+                    as ImageProvider,
+                  ),
+                  const SizedBox(width: 10),
+                  Text(user.name.split(' ').first,
+                      style: const TextStyle(
+                          color: AppColors.yellow,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w700)),
+                  const Spacer(),
+                  const Icon(Icons.star_border,
+                      color: Colors.white54, size: 18),
+                ],
+              ),
+              const SizedBox(height: 10),
+              Text(item.text,
+                  style: const TextStyle(
+                      color: Colors.white70,
+                      fontSize: 12,
+                      height: 1.5)),
+              const SizedBox(height: 10),
+              Row(
+                children: [
+                  const Icon(Icons.star_border,
+                      color: Colors.white54, size: 14),
+                  const SizedBox(width: 4),
+                  Text(item.likes,
+                      style: const TextStyle(
+                          color: Colors.white54, fontSize: 11)),
+                  const SizedBox(width: 16),
+                  const Icon(Icons.chat_bubble_outline,
+                      color: Colors.white54, size: 14),
+                  const SizedBox(width: 4),
+                  Text(item.comments,
+                      style: const TextStyle(
+                          color: Colors.white54, fontSize: 11)),
+                  const SizedBox(width: 16),
+                  const Icon(Icons.visibility_outlined,
+                      color: Colors.white54, size: 14),
+                  const SizedBox(width: 4),
+                  Text(item.views,
+                      style: const TextStyle(
+                          color: Colors.white54, fontSize: 11)),
+                ],
+              ),
+            ],
+          ),
         )),
 
         const SizedBox(height: 20),
@@ -204,20 +387,35 @@ class _DiscussionForumContent extends StatelessWidget {
     );
   }
 }
-//////////////////// Challenges ////////////////////
+
+// ── Challenges content ─────────────────────────────────────────────────────────
 class _ChallengesContent extends StatelessWidget {
   const _ChallengesContent();
 
-  final List<_ChallengeItem> _challenges = const [
+  static const _challenges = [
     _ChallengeItem(
       image: 'assets/images/workout_cardio.png',
       title: 'Cycling Challenge',
-      description: 'Lorem Ipsum Dolor Sit Amet.',
+      description:
+      'Lorem Ipsum Dolor Sit Amet Consectetur Magnis Pellentesque Felis Ullamcorper Imperdiet.',
     ),
     _ChallengeItem(
       image: 'assets/images/challenge_power_squat.png',
       title: 'Power Squat',
-      description: 'Lorem Ipsum Dolor Sit Amet.',
+      description:
+      'Lorem Ipsum Dolor Sit Amet Consectetur Magnis Pellentesque Felis Ullamcorper Imperdiet.',
+    ),
+    _ChallengeItem(
+      image: 'assets/images/fav_lower_body.png',
+      title: 'Press Leg Ultimate',
+      description:
+      'Lorem Ipsum Dolor Sit Amet Consectetur Magnis Pellentesque Felis Ullamcorper Imperdiet.',
+    ),
+    _ChallengeItem(
+      image: 'assets/images/workout_cardio.png',
+      title: 'Cycling',
+      description:
+      'Lorem Ipsum Dolor Sit Amet Consectetur Magnis Pellentesque Felis Ullamcorper Imperdiet.',
     ),
   ];
 
@@ -226,7 +424,7 @@ class _ChallengesContent extends StatelessWidget {
     return ListView(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       children: [
-        const Text('Challenges',
+        const Text('Challenges And Competitions',
             style: TextStyle(
                 color: AppColors.yellow,
                 fontSize: 16,
@@ -250,25 +448,44 @@ class _ChallengesContent extends StatelessWidget {
             child: Row(
               children: [
                 Expanded(
-                  child: Text(item.title,
-                      style: const TextStyle(color: Colors.white)),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(item.title,
+                          style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 14,
+                              fontWeight: FontWeight.w700)),
+                      const SizedBox(height: 6),
+                      Text(item.description,
+                          style: const TextStyle(
+                              color: Colors.white54,
+                              fontSize: 11,
+                              height: 1.4)),
+                    ],
+                  ),
                 ),
-                SizedBox(
-                  width: 80,
-                  height: 80,
-                  child: AppBgImage(assetPath: item.image),
+                const SizedBox(width: 12),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(12),
+                  child: SizedBox(
+                    width: 100,
+                    height: 90,
+                    child: AppBgImage(assetPath: item.image),
+                  ),
                 ),
               ],
             ),
           ),
         )),
+
+        const SizedBox(height: 20),
       ],
     );
   }
 }
 
-//////////////////// Models ////////////////////
-
+// ── Models ─────────────────────────────────────────────────────────────────────
 class _ForumItem {
   final String title;
   final String subtitle;
