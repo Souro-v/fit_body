@@ -89,4 +89,10 @@ class AppAssets {
   static const icNavWorkout      = 'assets/icons/ic_nav_workout.png';
   static const icNavFavorite     = 'assets/icons/ic_nav_favorite.png';
   static const icNavProfile      = 'assets/icons/ic_nav_profile.png';
+
+  // ── Weekly Challenge Screen ────────────────────────────────────────────────
+  static const weeklyChallengeBg    = 'assets/images/weekly_challengeBG.png';
+
+// ── Community / Challenges ─────────────────────────────────────────────────
+  static const challengePowerSquat  = 'assets/images/challenge_power_squat.png';
 }
