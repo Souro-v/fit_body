@@ -1,9 +1,7 @@
-// lib/screens/weekly_challenge_screen.dart
-
 import 'package:flutter/material.dart';
-import '../widgets/app_widgets.dart';
-import '../widgets/app_image.dart';
-import '../routes/app_routes.dart';
+import '../../widgets/app_widgets.dart';
+import '../../widgets/app_image.dart';
+import '../../routes/app_routes.dart';
 
 class WeeklyChallengeScreen extends StatefulWidget {
   const WeeklyChallengeScreen({super.key});
@@ -22,10 +20,7 @@ class _WeeklyChallengeScreenState extends State<WeeklyChallengeScreen> {
       body: Stack(
         fit: StackFit.expand,
         children: [
-          // ── Full screen background ────────────────────────────────────
           AppBgImage(assetPath: 'assets/images/weekly_challengeBG.png'),
-
-          // ── Dark overlay ──────────────────────────────────────────────
           Container(
             decoration: BoxDecoration(
               gradient: LinearGradient(
@@ -38,11 +33,9 @@ class _WeeklyChallengeScreenState extends State<WeeklyChallengeScreen> {
               ),
             ),
           ),
-
           SafeArea(
             child: Column(
               children: [
-                // ── Top bar ───────────────────────────────────────────
                 Padding(
                   padding: const EdgeInsets.fromLTRB(20, 16, 20, 0),
                   child: Row(
@@ -64,10 +57,7 @@ class _WeeklyChallengeScreenState extends State<WeeklyChallengeScreen> {
                     ],
                   ),
                 ),
-
                 const Spacer(),
-
-                // ── Card ─────────────────────────────────────────────
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 24),
                   padding: const EdgeInsets.all(20),
@@ -105,15 +95,12 @@ class _WeeklyChallengeScreenState extends State<WeeklyChallengeScreen> {
                     ],
                   ),
                 ),
-
                 const SizedBox(height: 20),
-
-                // ── Start Now button ──────────────────────────────────
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 24),
                   child: GestureDetector(
                     onTap: () => Navigator.pushNamed(
-                        context, AppRoutes.challengeRounds),
+                        context, AppRoutes.weeklyChallengeRounds),
                     child: Container(
                       height: 52,
                       decoration: BoxDecoration(
@@ -130,7 +117,6 @@ class _WeeklyChallengeScreenState extends State<WeeklyChallengeScreen> {
                     ),
                   ),
                 ),
-
                 const SizedBox(height: 40),
               ],
             ),

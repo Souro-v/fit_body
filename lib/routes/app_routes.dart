@@ -38,7 +38,10 @@ import '../screens/settings_screen.dart';
 import '../screens/notification_settings_screen.dart';
 import '../screens/password_settings_screen.dart';
 import '../screens/notifications_screen.dart';
-import '../screens/weekly_challenge_screen.dart';
+import '../screens/weekly_challenge/weekly_challenge_complete_screen.dart';
+import '../screens/weekly_challenge/weekly_challenge_intro_screen.dart';
+import '../screens/weekly_challenge/weekly_challenge_rounds_screen.dart';
+import '../screens/weekly_challenge/weekly_challenge_video_screen.dart';
 import '../screens/workout_screen.dart';
 import '../screens/workout_detail_screen.dart';
 import '../screens/create_routine_screen.dart';
@@ -96,6 +99,9 @@ class AppRoutes {
   static const String recommendations      = '/recommendations';
   static const String recommendationDetail = '/recommendation-detail';
   static const String weeklyChallenge = '/weekly-challenge';
+  static const String weeklyChallengeRounds   = '/weekly-challenge-rounds';
+  static const String weeklyChallengeVideo    = '/weekly-challenge-video';
+  static const String weeklyChallengeComplete = '/weekly-challenge-complete';
 
 }
 
@@ -198,6 +204,12 @@ class AppRouter {
         return _slide(const RecommendationDetailScreen(), settings);
       case AppRoutes.weeklyChallenge:
         return _slide(const WeeklyChallengeScreen(), settings);
+      case AppRoutes.weeklyChallengeRounds:
+        return _slide(const WeeklyChallengeRoundsScreen(), settings);
+      case AppRoutes.weeklyChallengeVideo:
+        return _slide(const WeeklyChallengeVideoScreen(), settings);
+      case AppRoutes.weeklyChallengeComplete:
+        return _slide(const WeeklyChallengeCompleteScreen(), settings);
       default:
         return _errorRoute(settings.name);
     }
