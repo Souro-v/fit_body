@@ -1,7 +1,6 @@
 import 'package:fit_body/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import '../../widgets/app_image.dart';
-
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
 
@@ -49,34 +48,23 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         ],
                       ),
                     ),
-                    // Search
                     IconButton(
                       onPressed: () =>
                           Navigator.pushNamed(context, AppRoutes.search),
-                      icon: const Icon(
-                        Icons.search,
-                        color: Colors.white70,
-                        size: 24,
-                      ),
+                      icon: const Icon(Icons.search,
+                          color: Colors.white70, size: 24),
                     ),
-                    // Notification
                     IconButton(
                       onPressed: () =>
                           Navigator.pushNamed(context, AppRoutes.notifications),
-                      icon: const Icon(
-                        Icons.notifications_none,
-                        color: Colors.white70,
-                        size: 24,
-                      ),
+                      icon: const Icon(Icons.notifications_none,
+                          color: Colors.white70, size: 24),
                     ),
-                    // Profile
                     IconButton(
-                      onPressed: () {},
-                      icon: const Icon(
-                        Icons.person_outline,
-                        color: Colors.white70,
-                        size: 24,
-                      ),
+                      onPressed: () =>
+                          Navigator.pushNamed(context, AppRoutes.profile),
+                      icon: const Icon(Icons.person_outline,
+                          color: Colors.white70, size: 24),
                     ),
                   ],
                 ),
@@ -93,16 +81,15 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     _QuickIcon(
                       iconPath: 'assets/icons/ic_workout.png',
                       label: 'Workout',
-                      onTap: () {},
+                      onTap: () =>
+                          Navigator.pushNamed(context, AppRoutes.workout),
                     ),
                     _Divider(),
                     _QuickIcon(
                       iconPath: 'assets/icons/ic_progress.png',
                       label: 'Progress\nTracking',
                       onTap: () => Navigator.pushNamed(
-                        context,
-                        AppRoutes.progressTracking,
-                      ),
+                          context, AppRoutes.progressTracking),
                     ),
                     _Divider(),
                     _QuickIcon(
@@ -129,34 +116,23 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Row(
                   children: [
-                    const Text(
-                      'Recommendations',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
+                    const Text('Recommendations',
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700,
+                        )),
                     const Spacer(),
                     GestureDetector(
                       onTap: () => Navigator.pushNamed(
-                        context,
-                        AppRoutes.recommendations,
-                      ),
+                          context, AppRoutes.recommendations),
                       child: const Row(
                         children: [
-                          Text(
-                            'See All',
-                            style: TextStyle(
-                              color: Color(0xFFB39DDB),
-                              fontSize: 13,
-                            ),
-                          ),
-                          Icon(
-                            Icons.arrow_forward_ios,
-                            color: Color(0xFFB39DDB),
-                            size: 12,
-                          ),
+                          Text('See All',
+                              style: TextStyle(
+                                  color: Color(0xFFB39DDB), fontSize: 13)),
+                          Icon(Icons.arrow_forward_ios,
+                              color: Color(0xFFB39DDB), size: 12),
                         ],
                       ),
                     ),
@@ -178,6 +154,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       title: 'Squat Exercise',
                       minutes: '12 Minutes',
                       kcal: '120 Kcal',
+                      onTap: () => Navigator.pushNamed(
+                          context, AppRoutes.recommendations),
                     ),
                     const SizedBox(width: 12),
                     _WorkoutCard(
@@ -185,6 +163,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       title: 'Full Body Stretching',
                       minutes: '12 Minutes',
                       kcal: '120 Kcal',
+                      onTap: () => Navigator.pushNamed(
+                          context, AppRoutes.recommendations),
                     ),
                   ],
                 ),
@@ -240,9 +220,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                 Text(
                                   'Plank With Hip Twist',
                                   style: TextStyle(
-                                    color: Colors.white70,
-                                    fontSize: 12,
-                                  ),
+                                      color: Colors.white70, fontSize: 12),
                                 ),
                               ],
                             ),
@@ -262,13 +240,30 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text(
-                      'Articles & Tips',
-                      style: TextStyle(
-                        color: Color(0xFFB39DDB),
-                        fontSize: 16,
-                        fontWeight: FontWeight.w700,
-                      ),
+                    Row(
+                      children: [
+                        const Text('Articles & Tips',
+                            style: TextStyle(
+                              color: Color(0xFFB39DDB),
+                              fontSize: 16,
+                              fontWeight: FontWeight.w700,
+                            )),
+                        const Spacer(),
+                        GestureDetector(
+                          onTap: () => Navigator.pushNamed(
+                              context, AppRoutes.resources),
+                          child: const Row(
+                            children: [
+                              Text('See All',
+                                  style: TextStyle(
+                                      color: Color(0xFFB39DDB),
+                                      fontSize: 13)),
+                              Icon(Icons.arrow_forward_ios,
+                                  color: Color(0xFFB39DDB), size: 12),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
                     const SizedBox(height: 12),
                     Row(
@@ -277,6 +272,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           child: _ArticleCard(
                             imagePath: 'assets/images/article1.png',
                             title: 'Supplement Guide...',
+                            onTap: () => Navigator.pushNamed(
+                                context, AppRoutes.resources),
                           ),
                         ),
                         const SizedBox(width: 12),
@@ -284,6 +281,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                           child: _ArticleCard(
                             imagePath: 'assets/images/article2.png',
                             title: '15 Quick & Effective\nDaily Routines...',
+                            onTap: () => Navigator.pushNamed(
+                                context, AppRoutes.resources),
                           ),
                         ),
                       ],
@@ -319,17 +318,26 @@ class _DashboardScreenState extends State<DashboardScreen> {
             _NavItem(
               iconPath: 'assets/icons/ic_nav_workout.png',
               selected: _currentIndex == 1,
-              onTap: () => setState(() => _currentIndex = 1),
+              onTap: () {
+                setState(() => _currentIndex = 1);
+                Navigator.pushNamed(context, AppRoutes.workout);
+              },
             ),
             _NavItem(
               iconPath: 'assets/icons/ic_nav_favorite.png',
               selected: _currentIndex == 2,
-              onTap: () => setState(() => _currentIndex = 2),
+              onTap: () {
+                setState(() => _currentIndex = 2);
+                Navigator.pushNamed(context, AppRoutes.favorites);
+              },
             ),
             _NavItem(
               iconPath: 'assets/icons/ic_nav_profile.png',
               selected: _currentIndex == 3,
-              onTap: () => Navigator.pushNamed(context, AppRoutes.profile),
+              onTap: () {
+                setState(() => _currentIndex = 3);
+                Navigator.pushNamed(context, AppRoutes.profile);
+              },
             ),
           ],
         ),
@@ -338,7 +346,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
   }
 }
 
-// ── Widgets ────────────────────────────────────────────────────────────────
+// ── Widgets ────────────────────────────────────────────────────────────────────
 
 class _Divider extends StatelessWidget {
   @override
@@ -353,7 +361,6 @@ class _QuickIcon extends StatelessWidget {
     required this.label,
     required this.onTap,
   });
-
   final String iconPath;
   final String label;
   final VoidCallback onTap;
@@ -366,15 +373,10 @@ class _QuickIcon extends StatelessWidget {
         children: [
           AppIconImage(assetPath: iconPath, size: 36, color: Colors.white),
           const SizedBox(height: 6),
-          Text(
-            label,
-            textAlign: TextAlign.center,
-            style: const TextStyle(
-              color: Colors.white70,
-              fontSize: 11,
-              height: 1.3,
-            ),
-          ),
+          Text(label,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                  color: Colors.white70, fontSize: 11, height: 1.3)),
         ],
       ),
     );
@@ -387,106 +389,92 @@ class _WorkoutCard extends StatelessWidget {
     required this.title,
     required this.minutes,
     required this.kcal,
+    required this.onTap,
   });
-
   final String imagePath;
   final String title;
   final String minutes;
   final String kcal;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
-    return ClipRRect(
-      borderRadius: BorderRadius.circular(16),
-      child: SizedBox(
-        width: 160,
-        child: Stack(
-          fit: StackFit.expand,
-          children: [
-            AppBgImage(assetPath: imagePath),
-            Container(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [
-                    Colors.transparent,
-                    Colors.black.withValues(alpha: 0.8),
-                  ],
+    return GestureDetector(
+      onTap: onTap,
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(16),
+        child: SizedBox(
+          width: 160,
+          child: Stack(
+            fit: StackFit.expand,
+            children: [
+              AppBgImage(assetPath: imagePath),
+              Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [
+                      Colors.transparent,
+                      Colors.black.withValues(alpha: 0.8),
+                    ],
+                  ),
                 ),
               ),
-            ),
-            // Star
-            const Positioned(
-              top: 8,
-              right: 8,
-              child: Icon(Icons.star_border, color: Colors.white, size: 20),
-            ),
-            // Play button
-            const Positioned(
-              bottom: 52,
-              right: 8,
-              child: CircleAvatar(
-                radius: 14,
-                backgroundColor: Color(0xFFB39DDB),
-                child: Icon(Icons.play_arrow, color: Colors.white, size: 16),
+              const Positioned(
+                top: 8,
+                right: 8,
+                child: Icon(Icons.star_border,
+                    color: Colors.white, size: 20),
               ),
-            ),
-            // Info
-            Positioned(
-              bottom: 0,
-              left: 0,
-              right: 0,
-              child: Padding(
-                padding: const EdgeInsets.all(10),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      title,
-                      style: const TextStyle(
-                        color: Colors.white,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w600,
+              const Positioned(
+                bottom: 52,
+                right: 8,
+                child: CircleAvatar(
+                  radius: 14,
+                  backgroundColor: Color(0xFFB39DDB),
+                  child: Icon(Icons.play_arrow,
+                      color: Colors.white, size: 16),
+                ),
+              ),
+              Positioned(
+                bottom: 0,
+                left: 0,
+                right: 0,
+                child: Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(title,
+                          style: const TextStyle(
+                              color: Colors.white,
+                              fontSize: 12,
+                              fontWeight: FontWeight.w600)),
+                      const SizedBox(height: 4),
+                      Row(
+                        children: [
+                          const Icon(Icons.access_time,
+                              color: Color(0xFFB39DDB), size: 12),
+                          const SizedBox(width: 3),
+                          Text(minutes,
+                              style: const TextStyle(
+                                  color: Colors.white70, fontSize: 10)),
+                          const SizedBox(width: 8),
+                          const Icon(Icons.local_fire_department,
+                              color: Color(0xFFB39DDB), size: 12),
+                          const SizedBox(width: 3),
+                          Text(kcal,
+                              style: const TextStyle(
+                                  color: Colors.white70, fontSize: 10)),
+                        ],
                       ),
-                    ),
-                    const SizedBox(height: 4),
-                    Row(
-                      children: [
-                        const Icon(
-                          Icons.access_time,
-                          color: Color(0xFFB39DDB),
-                          size: 12,
-                        ),
-                        const SizedBox(width: 3),
-                        Text(
-                          minutes,
-                          style: const TextStyle(
-                            color: Colors.white70,
-                            fontSize: 10,
-                          ),
-                        ),
-                        const SizedBox(width: 8),
-                        const Icon(
-                          Icons.local_fire_department,
-                          color: Color(0xFFB39DDB),
-                          size: 12,
-                        ),
-                        const SizedBox(width: 3),
-                        Text(
-                          kcal,
-                          style: const TextStyle(
-                            color: Colors.white70,
-                            fontSize: 10,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -494,43 +482,46 @@ class _WorkoutCard extends StatelessWidget {
 }
 
 class _ArticleCard extends StatelessWidget {
-  const _ArticleCard({required this.imagePath, required this.title});
-
+  const _ArticleCard({
+    required this.imagePath,
+    required this.title,
+    required this.onTap,
+  });
   final String imagePath;
   final String title;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        ClipRRect(
-          borderRadius: BorderRadius.circular(12),
-          child: SizedBox(
-            height: 110,
-            child: Stack(
-              fit: StackFit.expand,
-              children: [
-                AppBgImage(assetPath: imagePath),
-                const Positioned(
-                  top: 8,
-                  right: 8,
-                  child: Icon(Icons.star_border, color: Colors.white, size: 20),
-                ),
-              ],
+    return GestureDetector(
+      onTap: onTap,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.circular(12),
+            child: SizedBox(
+              height: 110,
+              child: Stack(
+                fit: StackFit.expand,
+                children: [
+                  AppBgImage(assetPath: imagePath),
+                  const Positioned(
+                    top: 8,
+                    right: 8,
+                    child: Icon(Icons.star_border,
+                        color: Colors.white, size: 20),
+                  ),
+                ],
+              ),
             ),
           ),
-        ),
-        const SizedBox(height: 6),
-        Text(
-          title,
-          style: const TextStyle(
-            color: Colors.white,
-            fontSize: 12,
-            height: 1.4,
-          ),
-        ),
-      ],
+          const SizedBox(height: 6),
+          Text(title,
+              style: const TextStyle(
+                  color: Colors.white, fontSize: 12, height: 1.4)),
+        ],
+      ),
     );
   }
 }
@@ -541,7 +532,6 @@ class _NavItem extends StatelessWidget {
     required this.selected,
     required this.onTap,
   });
-
   final String iconPath;
   final bool selected;
   final VoidCallback onTap;

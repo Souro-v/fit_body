@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import '../screens/resources/article_detail_screen.dart';
+import '../screens/resources/resources_screen.dart';
 import '../screens/weekly_challenge/challenge_detail_screen.dart';
 import '../screens/community/community_screen.dart';
 import '../screens/dashboard/dashboard_screen.dart';
@@ -102,6 +104,8 @@ class AppRoutes {
   static const String weeklyChallengeRounds   = '/weekly-challenge-rounds';
   static const String weeklyChallengeVideo    = '/weekly-challenge-video';
   static const String weeklyChallengeComplete = '/weekly-challenge-complete';
+  static const String resources     = '/resources';
+  static const String articleDetail = '/article-detail';
 
 }
 
@@ -210,7 +214,11 @@ class AppRouter {
         return _slide(const WeeklyChallengeVideoScreen(), settings);
       case AppRoutes.weeklyChallengeComplete:
         return _slide(const WeeklyChallengeCompleteScreen(), settings);
-      default:
+      case AppRoutes.resources:
+        return _slide(const ResourcesScreen(), settings);
+      case AppRoutes.articleDetail:
+        return _slide(const ArticleDetailScreen(), settings);
+        default:
         return _errorRoute(settings.name);
     }
   }
