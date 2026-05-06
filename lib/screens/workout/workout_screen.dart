@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import '../../widgets/app_image.dart';
 import '../../widgets/app_widgets.dart';
@@ -16,6 +15,50 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
   String _selectedLevel = 'Beginner';
 
   final _levels = ['Beginner', 'Intermediate', 'Advanced'];
+  final _quickVideos = [
+    _WorkoutItem(
+      image: 'assets/images/fav_loop_band.png',
+      title: 'Loop Band Exercises',
+      minutes: '45 Minutes',
+      kcal: '',
+      exercises: '5 Exercises',
+    ),
+    _WorkoutItem(
+      image: 'assets/images/fav_dumbbell_step.png',
+      title: 'Workouts For Beginners',
+      minutes: '45 Minutes',
+      kcal: '',
+      exercises: '5 Exercises',
+    ),
+    _WorkoutItem(
+      image: 'assets/images/workout_thumb2.png',
+      title: 'Full Body Stretch',
+      minutes: '45 Minutes',
+      kcal: '',
+      exercises: '5 Exercises',
+    ),
+    _WorkoutItem(
+      image: 'assets/images/video_low_impact.png',
+      title: 'Low Impact Workouts',
+      minutes: '45 Minutes',
+      kcal: '',
+      exercises: '5 Exercises',
+    ),
+    _WorkoutItem(
+      image: 'assets/images/fav_pull_out.png',
+      title: 'Strength Training',
+      minutes: '45 Minutes',
+      kcal: '',
+      exercises: '5 Exercises',
+    ),
+    _WorkoutItem(
+      image: 'assets/images/video_split_squats.png',
+      title: 'Split Squats Vs Lunges',
+      minutes: '45 Minutes',
+      kcal: '',
+      exercises: '5 Exercises',
+    ),
+  ];
 
   late final _levelData = {
     'Beginner': _LevelData(
@@ -123,33 +166,48 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
                 children: [
                   GestureDetector(
                     onTap: () => Navigator.pop(context),
-                    child: const Icon(Icons.arrow_back_ios,
-                        color: AppColors.yellow, size: 16),
+                    child: const Icon(
+                      Icons.arrow_back_ios,
+                      color: AppColors.yellow,
+                      size: 16,
+                    ),
                   ),
                   const SizedBox(width: 8),
-                  const Text('Workout',
-                      style: TextStyle(
-                          color: AppColors.purple,
-                          fontSize: 20,
-                          fontWeight: FontWeight.w700)),
+                  const Text(
+                    'Workout',
+                    style: TextStyle(
+                      color: AppColors.purple,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
                   const Spacer(),
                   IconButton(
                     onPressed: () =>
                         Navigator.pushNamed(context, AppRoutes.search),
-                    icon: const Icon(Icons.search,
-                        color: Colors.white70, size: 22),
+                    icon: const Icon(
+                      Icons.search,
+                      color: Colors.white70,
+                      size: 22,
+                    ),
                   ),
                   IconButton(
-                    onPressed: () => Navigator.pushNamed(
-                        context, AppRoutes.notifications),
-                    icon: const Icon(Icons.notifications_none,
-                        color: Colors.white70, size: 22),
+                    onPressed: () =>
+                        Navigator.pushNamed(context, AppRoutes.notifications),
+                    icon: const Icon(
+                      Icons.notifications_none,
+                      color: Colors.white70,
+                      size: 22,
+                    ),
                   ),
                   IconButton(
                     onPressed: () =>
                         Navigator.pushNamed(context, AppRoutes.profile),
-                    icon: const Icon(Icons.person_outline,
-                        color: Colors.white70, size: 22),
+                    icon: const Icon(
+                      Icons.person_outline,
+                      color: Colors.white70,
+                      size: 22,
+                    ),
                   ),
                 ],
               ),
@@ -168,25 +226,24 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
                     child: Container(
                       margin: const EdgeInsets.only(right: 8),
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 16, vertical: 8),
+                        horizontal: 16,
+                        vertical: 8,
+                      ),
                       decoration: BoxDecoration(
-                        color: selected
-                            ? AppColors.yellow
-                            : Colors.transparent,
+                        color: selected ? AppColors.yellow : Colors.transparent,
                         borderRadius: BorderRadius.circular(20),
                         border: Border.all(
-                          color: selected
-                              ? AppColors.yellow
-                              : Colors.white24,
+                          color: selected ? AppColors.yellow : Colors.white24,
                         ),
                       ),
-                      child: Text(level,
-                          style: TextStyle(
-                              color: selected
-                                  ? Colors.black
-                                  : Colors.white70,
-                              fontSize: 13,
-                              fontWeight: FontWeight.w600)),
+                      child: Text(
+                        level,
+                        style: TextStyle(
+                          color: selected ? Colors.black : Colors.white70,
+                          fontSize: 13,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
                     ),
                   );
                 }).toList(),
@@ -237,46 +294,66 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
                               left: 12,
                               right: 12,
                               child: Column(
-                                crossAxisAlignment:
-                                CrossAxisAlignment.start,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
-                                  Text(data.bannerTitle,
-                                      style: const TextStyle(
-                                          color: AppColors.yellow,
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w700)),
+                                  Text(
+                                    data.bannerTitle,
+                                    style: const TextStyle(
+                                      color: AppColors.yellow,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
                                   const SizedBox(height: 6),
                                   const Row(
                                     children: [
-                                      Icon(Icons.access_time,
-                                          color: AppColors.purple,
-                                          size: 12),
+                                      Icon(
+                                        Icons.access_time,
+                                        color: AppColors.purple,
+                                        size: 12,
+                                      ),
                                       SizedBox(width: 3),
-                                      Text('45 Minutes',
-                                          style: TextStyle(
-                                              color: Colors.white70,
-                                              fontSize: 11)),
+                                      Text(
+                                        '45 Minutes',
+                                        style: TextStyle(
+                                          color: Colors.white70,
+                                          fontSize: 11,
+                                        ),
+                                      ),
                                       SizedBox(width: 10),
-                                      Icon(Icons.local_fire_department,
-                                          color: AppColors.purple,
-                                          size: 12),
+                                      Icon(
+                                        Icons.local_fire_department,
+                                        color: AppColors.purple,
+                                        size: 12,
+                                      ),
                                       SizedBox(width: 3),
-                                      Text('120 Kcal',
-                                          style: TextStyle(
-                                              color: Colors.white70,
-                                              fontSize: 11)),
+                                      Text(
+                                        '120 Kcal',
+                                        style: TextStyle(
+                                          color: Colors.white70,
+                                          fontSize: 11,
+                                        ),
+                                      ),
                                       SizedBox(width: 10),
-                                      Icon(Icons.fitness_center,
-                                          color: AppColors.purple,
-                                          size: 12),
+                                      Icon(
+                                        Icons.fitness_center,
+                                        color: AppColors.purple,
+                                        size: 12,
+                                      ),
                                       SizedBox(width: 3),
-                                      Text('5 Exercises',
-                                          style: TextStyle(
-                                              color: Colors.white70,
-                                              fontSize: 11)),
+                                      Text(
+                                        '5 Exercises',
+                                        style: TextStyle(
+                                          color: Colors.white70,
+                                          fontSize: 11,
+                                        ),
+                                      ),
                                       Spacer(),
-                                      Icon(Icons.star_border,
-                                          color: Colors.white, size: 18),
+                                      Icon(
+                                        Icons.star_border,
+                                        color: Colors.white,
+                                        size: 18,
+                                      ),
                                     ],
                                   ),
                                 ],
@@ -291,25 +368,31 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
                   const SizedBox(height: 20),
 
                   // Section title
-                  Text(data.sectionTitle,
-                      style: const TextStyle(
-                          color: AppColors.yellow,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w700)),
+                  Text(
+                    data.sectionTitle,
+                    style: const TextStyle(
+                      color: AppColors.yellow,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
                   const SizedBox(height: 4),
-                  Text(data.sectionSubtitle,
-                      style: const TextStyle(
-                          color: Colors.white54, fontSize: 12)),
+                  Text(
+                    data.sectionSubtitle,
+                    style: const TextStyle(color: Colors.white54, fontSize: 12),
+                  ),
 
                   const SizedBox(height: 12),
 
                   // Create Routine button
                   GestureDetector(
-                    onTap: () => Navigator.pushNamed(
-                        context, AppRoutes.createRoutine),
+                    onTap: () =>
+                        Navigator.pushNamed(context, AppRoutes.createRoutine),
                     child: Container(
                       padding: const EdgeInsets.symmetric(
-                          horizontal: 16, vertical: 10),
+                        horizontal: 16,
+                        vertical: 10,
+                      ),
                       decoration: BoxDecoration(
                         border: Border.all(color: AppColors.yellow),
                         borderRadius: BorderRadius.circular(20),
@@ -317,14 +400,16 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
                       child: const Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          Icon(Icons.add,
-                              color: AppColors.yellow, size: 18),
+                          Icon(Icons.add, color: AppColors.yellow, size: 18),
                           SizedBox(width: 6),
-                          Text('Create Your Routine',
-                              style: TextStyle(
-                                  color: AppColors.yellow,
-                                  fontSize: 13,
-                                  fontWeight: FontWeight.w600)),
+                          Text(
+                            'Create Your Routine',
+                            style: TextStyle(
+                              color: AppColors.yellow,
+                              fontSize: 13,
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
                         ],
                       ),
                     ),
@@ -333,14 +418,150 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
                   const SizedBox(height: 16),
 
                   // Workout list
-                  ...data.workouts.map((item) => _WorkoutCard(
-                    item: item,
-                    onTap: () => Navigator.pushNamed(
-                      context,
-                      AppRoutes.workoutDetail,
-                      arguments: _selectedLevel,
+                  ...data.workouts.map(
+                    (item) => _WorkoutCard(
+                      item: item,
+                      onTap: () => Navigator.pushNamed(
+                        context,
+                        AppRoutes.workoutDetail,
+                        arguments: _selectedLevel,
+                      ),
                     ),
-                  )),
+                  ),
+                  const SizedBox(height: 24),
+
+                  // ── Quick & Easy Workout Videos ───────────────────────────
+                  const Text(
+                    'Quick & Easy Workout Videos',
+                    style: TextStyle(
+                      color: AppColors.yellow,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  const Text(
+                    'Discover Fresh Workouts: Elevate Your Training',
+                    style: TextStyle(color: Colors.white54, fontSize: 12),
+                  ),
+
+                  const SizedBox(height: 16),
+
+                  GridView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          crossAxisSpacing: 12,
+                          mainAxisSpacing: 12,
+                          childAspectRatio: 0.85,
+                        ),
+                    itemCount: _quickVideos.length,
+                    itemBuilder: (context, index) {
+                      final item = _quickVideos[index];
+                      return GestureDetector(
+                        onTap: () => Navigator.pushNamed(
+                          context,
+                          AppRoutes.workoutDetail,
+                          arguments: _selectedLevel,
+                        ),
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(16),
+                          child: Stack(
+                            fit: StackFit.expand,
+                            children: [
+                              AppBgImage(assetPath: item.image),
+                              Container(
+                                decoration: BoxDecoration(
+                                  gradient: LinearGradient(
+                                    begin: Alignment.topCenter,
+                                    end: Alignment.bottomCenter,
+                                    colors: [
+                                      Colors.transparent,
+                                      Colors.black.withValues(alpha: 0.8),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                              const Positioned(
+                                top: 8,
+                                right: 8,
+                                child: Icon(
+                                  Icons.star,
+                                  color: AppColors.yellow,
+                                  size: 18,
+                                ),
+                              ),
+                              const Positioned(
+                                bottom: 44,
+                                right: 8,
+                                child: CircleAvatar(
+                                  radius: 14,
+                                  backgroundColor: AppColors.purple,
+                                  child: Icon(
+                                    Icons.play_arrow,
+                                    color: Colors.white,
+                                    size: 16,
+                                  ),
+                                ),
+                              ),
+                              Positioned(
+                                bottom: 8,
+                                left: 8,
+                                right: 8,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      item.title,
+                                      style: const TextStyle(
+                                        color: AppColors.yellow,
+                                        fontSize: 11,
+                                        fontWeight: FontWeight.w600,
+                                      ),
+                                    ),
+                                    const SizedBox(height: 3),
+                                    Row(
+                                      children: [
+                                        const Icon(
+                                          Icons.access_time,
+                                          color: Colors.white70,
+                                          size: 10,
+                                        ),
+                                        const SizedBox(width: 2),
+                                        Text(
+                                          item.minutes,
+                                          style: const TextStyle(
+                                            color: Colors.white70,
+                                            fontSize: 9,
+                                          ),
+                                        ),
+                                        const SizedBox(width: 6),
+                                        const Icon(
+                                          Icons.fitness_center,
+                                          color: Colors.white70,
+                                          size: 10,
+                                        ),
+                                        const SizedBox(width: 2),
+                                        Text(
+                                          item.exercises,
+                                          style: const TextStyle(
+                                            color: Colors.white70,
+                                            fontSize: 9,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
+                    },
+                  ),
 
                   const SizedBox(height: 20),
                 ],
@@ -359,6 +580,7 @@ class _WorkoutScreenState extends State<WorkoutScreen> {
 
 class _WorkoutCard extends StatelessWidget {
   const _WorkoutCard({required this.item, required this.onTap});
+
   final _WorkoutItem item;
   final VoidCallback onTap;
 
@@ -379,38 +601,68 @@ class _WorkoutCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(item.title,
-                      style: const TextStyle(
-                          color: Colors.black,
-                          fontSize: 15,
-                          fontWeight: FontWeight.w700)),
+                  Text(
+                    item.title,
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 15,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
                   const SizedBox(height: 6),
-                  Row(children: [
-                    const Icon(Icons.access_time,
-                        color: AppColors.purple, size: 12),
-                    const SizedBox(width: 3),
-                    Text(item.minutes,
+                  Row(
+                    children: [
+                      const Icon(
+                        Icons.access_time,
+                        color: AppColors.purple,
+                        size: 12,
+                      ),
+                      const SizedBox(width: 3),
+                      Text(
+                        item.minutes,
                         style: const TextStyle(
-                            color: Colors.black54, fontSize: 11)),
-                  ]),
+                          color: Colors.black54,
+                          fontSize: 11,
+                        ),
+                      ),
+                    ],
+                  ),
                   const SizedBox(height: 3),
-                  Row(children: [
-                    const Icon(Icons.local_fire_department,
-                        color: AppColors.purple, size: 12),
-                    const SizedBox(width: 3),
-                    Text(item.kcal,
+                  Row(
+                    children: [
+                      const Icon(
+                        Icons.local_fire_department,
+                        color: AppColors.purple,
+                        size: 12,
+                      ),
+                      const SizedBox(width: 3),
+                      Text(
+                        item.kcal,
                         style: const TextStyle(
-                            color: Colors.black54, fontSize: 11)),
-                  ]),
+                          color: Colors.black54,
+                          fontSize: 11,
+                        ),
+                      ),
+                    ],
+                  ),
                   const SizedBox(height: 3),
-                  Row(children: [
-                    const Icon(Icons.fitness_center,
-                        color: AppColors.purple, size: 12),
-                    const SizedBox(width: 3),
-                    Text(item.exercises,
+                  Row(
+                    children: [
+                      const Icon(
+                        Icons.fitness_center,
+                        color: AppColors.purple,
+                        size: 12,
+                      ),
+                      const SizedBox(width: 3),
+                      Text(
+                        item.exercises,
                         style: const TextStyle(
-                            color: Colors.black54, fontSize: 11)),
-                  ]),
+                          color: Colors.black54,
+                          fontSize: 11,
+                        ),
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ),
@@ -427,8 +679,11 @@ class _WorkoutCard extends StatelessWidget {
                     const Positioned(
                       top: 6,
                       right: 6,
-                      child: Icon(Icons.star_border,
-                          color: Colors.white, size: 18),
+                      child: Icon(
+                        Icons.star_border,
+                        color: Colors.white,
+                        size: 18,
+                      ),
                     ),
                   ],
                 ),
@@ -443,6 +698,7 @@ class _WorkoutCard extends StatelessWidget {
 
 class _Badge extends StatelessWidget {
   const _Badge({required this.label});
+
   final String label;
 
   @override
@@ -453,11 +709,14 @@ class _Badge extends StatelessWidget {
         color: AppColors.yellow,
         borderRadius: BorderRadius.circular(20),
       ),
-      child: Text(label,
-          style: const TextStyle(
-              color: Colors.black,
-              fontSize: 11,
-              fontWeight: FontWeight.w600)),
+      child: Text(
+        label,
+        style: const TextStyle(
+          color: Colors.black,
+          fontSize: 11,
+          fontWeight: FontWeight.w600,
+        ),
+      ),
     );
   }
 }
