@@ -15,30 +15,68 @@ class _ResourcesScreenState extends State<ResourcesScreen> {
   String _selectedTab = 'Articles & Tips';
 
   final _articles = [
-    _ArticleItem(
+    ArticleItem(
       image: 'assets/images/strength_training.png',
       title: 'Strength Training Tips',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit...',
+      description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit...',
     ),
-    _ArticleItem(
+    ArticleItem(
       image: 'assets/images/healthy_weightloss.png',
       title: 'Healthy Weight Loss',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit...',
+      description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit...',
     ),
-    _ArticleItem(
+    ArticleItem(
       image: 'assets/images/ex_leg_press.png',
       title: 'Unlock Your Gym Potential',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit...',
+      description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit...',
     ),
-    _ArticleItem(
+    ArticleItem(
       image: 'assets/images/weekly_challenge.png',
       title: 'From Beginner To Buff',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit...',
+      description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit...',
     ),
-    _ArticleItem(
+    ArticleItem(
       image: 'assets/images/workout_thumb1.png',
       title: 'Strategies For Gym Success',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit...',
+      description:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit...',
+    ),
+  ];
+
+  final _videos = [
+    ArticleItem(
+      image: 'assets/images/fav_loop_band.png',
+      title: 'Loop Band Exercises',
+      description: '45 Minutes  •  5 Exercises',
+    ),
+    ArticleItem(
+      image: 'assets/images/fav_dumbbell_step.png',
+      title: 'Workouts For Beginners',
+      description: '45 Minutes  •  5 Exercises',
+    ),
+    ArticleItem(
+      image: 'assets/images/workout_thumb2.png',
+      title: 'Full Body Stretch',
+      description: '45 Minutes  •  5 Exercises',
+    ),
+    ArticleItem(
+      image: 'assets/images/video_low_impact.png',
+      title: 'Low Impact Workouts',
+      description: '45 Minutes  •  5 Exercises',
+    ),
+    ArticleItem(
+      image: 'assets/images/fav_pull_out.png',
+      title: 'Strength Training',
+      description: '45 Minutes  •  5 Exercises',
+    ),
+    ArticleItem(
+      image: 'assets/images/video_split_squats.png',
+      title: 'Split Squats Vs Lunges',
+      description: '45 Minutes  •  5 Exercises',
     ),
   ];
 
@@ -94,7 +132,8 @@ class _ResourcesScreenState extends State<ResourcesScreen> {
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Row(
-                children: ['Workout Videos', 'Articles & Tips'].map((tab) {
+                children:
+                ['Workout Videos', 'Articles & Tips'].map((tab) {
                   final selected = _selectedTab == tab;
                   return Expanded(
                     child: GestureDetector(
@@ -133,8 +172,10 @@ class _ResourcesScreenState extends State<ResourcesScreen> {
 
             // ── Content ──────────────────────────────────────────────────
             Expanded(
-              child: ListView.builder(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
+              child: _selectedTab == 'Articles & Tips'
+                  ? ListView.builder(
+                padding:
+                const EdgeInsets.symmetric(horizontal: 20),
                 itemCount: _articles.length,
                 itemBuilder: (context, index) {
                   final item = _articles[index];
@@ -155,13 +196,15 @@ class _ResourcesScreenState extends State<ResourcesScreen> {
                         children: [
                           Expanded(
                             child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                              crossAxisAlignment:
+                              CrossAxisAlignment.start,
                               children: [
                                 Text(item.title,
                                     style: const TextStyle(
                                         color: Colors.black,
                                         fontSize: 15,
-                                        fontWeight: FontWeight.w700)),
+                                        fontWeight:
+                                        FontWeight.w700)),
                                 const SizedBox(height: 6),
                                 Text(item.description,
                                     style: const TextStyle(
@@ -173,14 +216,16 @@ class _ResourcesScreenState extends State<ResourcesScreen> {
                           ),
                           const SizedBox(width: 10),
                           ClipRRect(
-                            borderRadius: BorderRadius.circular(12),
+                            borderRadius:
+                            BorderRadius.circular(12),
                             child: SizedBox(
                               width: 100,
                               height: 90,
                               child: Stack(
                                 fit: StackFit.expand,
                                 children: [
-                                  AppBgImage(assetPath: item.image),
+                                  AppBgImage(
+                                      assetPath: item.image),
                                   const Positioned(
                                     top: 6,
                                     right: 6,
@@ -197,7 +242,8 @@ class _ResourcesScreenState extends State<ResourcesScreen> {
                     ),
                   );
                 },
-              ),
+              )
+                  : _WorkoutVideosContent(videos: _videos),
             ),
           ],
         ),
@@ -210,6 +256,110 @@ class _ResourcesScreenState extends State<ResourcesScreen> {
   }
 }
 
+// ── Workout Videos content ─────────────────────────────────────────────────────
+class _WorkoutVideosContent extends StatelessWidget {
+  const _WorkoutVideosContent({required this.videos});
+  final List<ArticleItem> videos;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      padding: const EdgeInsets.symmetric(horizontal: 20),
+      children: [
+        const Text('Quick & Easy Workout Videos',
+            style: TextStyle(
+                color: AppColors.yellow,
+                fontSize: 16,
+                fontWeight: FontWeight.w700)),
+        const SizedBox(height: 4),
+        const Text('Discover Fresh Workouts: Elevate Your Training',
+            style: TextStyle(color: Colors.white54, fontSize: 12)),
+        const SizedBox(height: 16),
+        GridView.builder(
+          shrinkWrap: true,
+          physics: const NeverScrollableScrollPhysics(),
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2,
+            crossAxisSpacing: 12,
+            mainAxisSpacing: 12,
+            childAspectRatio: 0.85,
+          ),
+          itemCount: videos.length,
+          itemBuilder: (context, index) {
+            final item = videos[index];
+            return GestureDetector(
+              onTap: () => Navigator.pushNamed(
+                context,
+                AppRoutes.workoutDetail,
+                arguments: 'Beginner',
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(16),
+                child: Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    AppBgImage(assetPath: item.image),
+                    Container(
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                            Colors.transparent,
+                            Colors.black.withValues(alpha: 0.8),
+                          ],
+                        ),
+                      ),
+                    ),
+                    const Positioned(
+                      top: 8,
+                      right: 8,
+                      child: Icon(Icons.star,
+                          color: AppColors.yellow, size: 18),
+                    ),
+                    const Positioned(
+                      bottom: 44,
+                      right: 8,
+                      child: CircleAvatar(
+                        radius: 14,
+                        backgroundColor: AppColors.purple,
+                        child: Icon(Icons.play_arrow,
+                            color: Colors.white, size: 16),
+                      ),
+                    ),
+                    Positioned(
+                      bottom: 8,
+                      left: 8,
+                      right: 8,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(item.title,
+                              style: const TextStyle(
+                                  color: AppColors.yellow,
+                                  fontSize: 11,
+                                  fontWeight: FontWeight.w600)),
+                          const SizedBox(height: 3),
+                          Text(item.description,
+                              style: const TextStyle(
+                                  color: Colors.white70,
+                                  fontSize: 9)),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            );
+          },
+        ),
+        const SizedBox(height: 20),
+      ],
+    );
+  }
+}
+
+// ── Model ──────────────────────────────────────────────────────────────────────
 class ArticleItem {
   final String image;
   final String title;
@@ -219,13 +369,5 @@ class ArticleItem {
     required this.image,
     required this.title,
     required this.description,
-  });
-}
-
-class _ArticleItem extends ArticleItem {
-  _ArticleItem({
-    required super.image,
-    required super.title,
-    required super.description,
   });
 }
