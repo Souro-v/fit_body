@@ -95,4 +95,9 @@ class AppAssets {
 
 // ── Community / Challenges ─────────────────────────────────────────────────
   static const challengePowerSquat  = 'assets/images/challenge_power_squat.png';
+  static const strengthTraining  = 'assets/images/strength_training.png';
+  static const healthyWeightloss = 'assets/images/healthy_weightloss.png';
+  static const videoLowImpact    = 'assets/images/video_low_impact.png';
+  static const videoSplitSquats  = 'assets/images/video_split_squats.png';
+  static const icTrophy          = 'assets/icons/ic_trophy.png';
 }
