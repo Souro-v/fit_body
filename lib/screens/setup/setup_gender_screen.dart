@@ -41,7 +41,7 @@ class _SetupGenderScreenState extends State<SetupGenderScreen> {
                 width: double.infinity,
                 padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
                 decoration: BoxDecoration(
-                  color: const Color(0xFFB39DDB).withOpacity(0.4),
+                  color: const Color(0xFFB39DDB).withValues(alpha: 0.4),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: const Text(
@@ -79,7 +79,7 @@ class _SetupGenderScreenState extends State<SetupGenderScreen> {
                   width: double.infinity,
                   decoration: BoxDecoration(
                     color: _selected == null
-                        ? const Color(0xFF2D2D2D).withOpacity(0.5)
+                        ? const Color(0xFF2D2D2D).withValues(alpha: 0.5)
                         : const Color(0xFF2D2D2D),
                     borderRadius: BorderRadius.circular(30),
                     border: Border.all(color: Colors.white12),
@@ -131,7 +131,6 @@ class _GenderOption extends StatelessWidget {
             child: Image.asset(
               iconPath,
               fit: BoxFit.contain,
-              color: selected ? Colors.black : Colors.white,
               errorBuilder: (_, __, ___) => Icon(
                 label == 'Male' ? Icons.male : Icons.female,
                 color: selected ? Colors.black : Colors.white,

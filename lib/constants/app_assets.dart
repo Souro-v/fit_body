@@ -9,7 +9,7 @@ class AppAssets {
   static const homeLogo          = 'assets/images/home_logo.png';
   static const profilePhoto      = 'assets/images/profile_photo.png';
   // ── Setup Images ───────────────────────────────────────────────────────────
-  static const setupBg           = 'assets/images/setup_bg.jpg';
+  static const setupBg           = 'assets/images/setup_bg.png';
   // ── Workout Images ─────────────────────────────────────────────────────────
   static const workoutThumb1     = 'assets/images/workout_thumb1.png';
   static const workoutThumb2     = 'assets/images/workout_thumb2.png';
