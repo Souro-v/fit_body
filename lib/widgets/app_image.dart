@@ -10,11 +10,10 @@
 //   • Icon (small)      → AppIconImage()  — fixed size, contain
 // ─────────────────────────────────────────────────────────────────────────────
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 // ─── 1. Full-screen background image ─────────────────────────────────────────
-// যেকোনো screen size এ perfectly fit হবে।
-// Alignment.topCenter → উপর কখনো কাটবে না, প্রয়োজনে নিচ থেকে crop হবে।
 class AppBgImage extends StatelessWidget {
   const AppBgImage({
     super.key,
@@ -27,24 +26,43 @@ class AppBgImage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // LayoutBuilder দিয়ে যেকোনো screen size detect করে
-    // BoxFit.cover → image নিজে থেকে stretch/scale হয়ে পুরো screen fill করবে
-    // Alignment.topCenter → উপর কখনো কাটবে না, নিচ থেকে crop হবে
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        return SizedBox(
-          width: constraints.maxWidth,
-          height: constraints.maxHeight,
-          child: Image.asset(
-            assetPath,
-            fit: BoxFit.cover,
-            alignment: alignment,
-            width: constraints.maxWidth,
-            height: constraints.maxHeight,
-            errorBuilder: _placeholder,
+    if (assetPath.startsWith('http')) {
+      return SizedBox.expand(
+        child: CachedNetworkImage(
+          imageUrl: assetPath,
+          fit: BoxFit.cover,
+          alignment: alignment,
+          placeholder: (_, __) => Container(color: const Color(0xFF1A1A1A)),
+          errorWidget: (_, __, ___) => Container(
+            color: const Color(0xFF1A1A1A),
+            child: const Center(
+              child: Icon(
+                Icons.image_not_supported_outlined,
+                color: Colors.white24,
+                size: 48,
+              ),
+            ),
           ),
-        );
-      },
+        ),
+      );
+    }
+
+    return SizedBox.expand(
+      child: Image.asset(
+        assetPath,
+        fit: BoxFit.cover,
+        alignment: alignment,
+        errorBuilder: (_, __, ___) => Container(
+          color: const Color(0xFF1A1A1A),
+          child: const Center(
+            child: Icon(
+              Icons.add_photo_alternate_outlined,
+              color: Colors.white24,
+              size: 48,
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
@@ -74,7 +92,8 @@ class AppLogoImage extends StatelessWidget {
       assetPath,
       width: resolvedWidth,
       height: height,
-      fit: BoxFit.contain,         // aspect ratio ঠিক রাখে, distort হয় না
+      fit: BoxFit.contain,
+      // aspect ratio ঠিক রাখে, distort হয় না
       alignment: Alignment.topCenter,
       errorBuilder: _placeholder,
     );
@@ -88,7 +107,7 @@ class AppIconImage extends StatelessWidget {
     super.key,
     required this.assetPath,
     this.size = 52,
-    this.color,                  // tint color, null = original color
+    this.color, // tint color, null = original color
     this.fallbackIcon = Icons.image_not_supported_outlined,
   });
 
@@ -105,11 +124,8 @@ class AppIconImage extends StatelessWidget {
       height: size,
       fit: BoxFit.contain,
       color: color,
-      errorBuilder: (_, __, ___) => Icon(
-        fallbackIcon,
-        size: size * 0.8,
-        color: color ?? Colors.white38,
-      ),
+      errorBuilder: (_, __, ___) =>
+          Icon(fallbackIcon, size: size * 0.8, color: color ?? Colors.white38),
     );
   }
 }
